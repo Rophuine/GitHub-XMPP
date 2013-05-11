@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6FBA11
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub-XMPP.Tests", "..\GitHub-XMPP.Tests\GitHub-XMPP.Tests.csproj", "{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -20,6 +22,10 @@ Global
 		{8397A1F6-E79C-4438-A47A-9E0026F7554F}.Debug|x86.Build.0 = Debug|x86
 		{8397A1F6-E79C-4438-A47A-9E0026F7554F}.Release|x86.ActiveCfg = Release|x86
 		{8397A1F6-E79C-4438-A47A-9E0026F7554F}.Release|x86.Build.0 = Release|x86
+		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Debug|x86.ActiveCfg = Debug|x86
+		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Debug|x86.Build.0 = Debug|x86
+		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Release|x86.ActiveCfg = Release|x86
+		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

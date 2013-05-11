@@ -1,22 +1,20 @@
 ﻿using System.Linq;
-using GitHub_XMPP.Notifiers;
 using Nancy;
+using Nancy.TinyIoc;
 
 namespace GitHub_XMPP.EventServices
 {
     public class HookServer : NancyModule
     {
-        private readonly IEventNotifier _eventNotifier;
-
-        public HookServer(IEventNotifier eventNotifier)
+        public HookServer(GitHubEvent githubEvent)
             : base("/GitHubHooks")
         {
-            _eventNotifier = eventNotifier;
             Post["/event"] = parms =>
                 {
                     try
                     {
-                        HandleGitHubEvent(Request.Headers, Request.Form["payload"]);
+                        string githubNotificationType = Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event").FirstOrDefault().Value.FirstOrDefault();
+                        githubEvent.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
                         return Response.AsText("Thanks GitHub!");
                     }
                     catch
@@ -26,17 +24,6 @@ namespace GitHub_XMPP.EventServices
                         return error;
                     }
                 };
-        }
-
-        private void HandleGitHubEvent(RequestHeaders headers, string githubHookPayload)
-        {
-            string githubNotificationType = headers.Where(kvp => kvp.Key == "X-GitHub-Event").FirstOrDefault().Value.FirstOrDefault();
-
-            if (githubNotificationType == "push")
-            {
-                string message = "Received commit notification from GitHub.";
-                _eventNotifier.SendText(message);
-            }
         }
     }
 }
