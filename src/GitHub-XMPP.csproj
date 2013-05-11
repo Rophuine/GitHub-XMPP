@@ -84,8 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\GitHubIssueComment.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEvent.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEventData.cs" />
+    <Compile Include="EventHandlers\GitHubPullRequest.cs" />
+    <Compile Include="EventHandlers\GitHubRepository.cs" />
     <Compile Include="EventHandlers\GitHubUser.cs" />
     <Compile Include="EventHandlers\IGitHubEventHandler.cs" />
     <Compile Include="EventHandlers\GitHubIssue.cs" />

@@ -20,9 +20,8 @@ namespace GitHub_XMPP.EventServices
             var eventData = JsonConvert.DeserializeObject<GitHubIssueCommentEventData>(jsonData);
 
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} commented on issue {1} ({2})", eventData.user.login, eventData.id,
-                                        eventData.html_url));
-            sb.Append(eventData.body);
+            sb.AppendLine(string.Format("{0} {1} a comment on issue {2} ({3})",eventData.sender.login, eventData.action, eventData.issue.title, eventData.issue.html_url));
+            sb.Append(eventData.comment.body);
 
             _eventNotifier.SendText(sb.ToString());
         }

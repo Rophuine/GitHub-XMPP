@@ -16,23 +16,7 @@ namespace GitHub_XMPP.EventServices
         public string reference { get; set; }
 
         public Commit[] commits { get; set; }
-        public Repository repository { get; set; }
-
-        public class Repository
-        {
-            public string name { get; set; }
-            public string url { get; set; }
-            public string pledgie { get; set; }
-            public string description { get; set; }
-            public string homepage { get; set; }
-            public int watchers { get; set; }
-            public int forks { get; set; }
-
-            [JsonProperty(PropertyName = "private")]
-            public bool privateRepo { get; set; }
-
-            public Author owner { get; set; }
-        }
+        public GitHubRepository repository { get; set; }
 
         public class Commit
         {

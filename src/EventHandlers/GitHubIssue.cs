@@ -1,22 +1,27 @@
 using System.Collections.Generic;
+using GitHub_XMPP.EventServices;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubIssue
     {
         public string url { get; set; }
+        public string labels_url { get; set; }
+        public string comments_url { get; set; }
+        public string events_url { get; set; }
         public string html_url { get; set; }
+        public int id { get; set; }
         public int number { get; set; }
         public string state { get; set; }
         public string title { get; set; }
         public string body { get; set; }
         public GitHubUser user { get; set; }
         public List<Label> labels { get; set; }
-        public Assignee assignee { get; set; }
+        public GitHubUser assignee { get; set; }
         public Milestone milestone { get; set; }
         public int comments { get; set; }
-        public PullRequest pull_request { get; set; }
-        public object closed_at { get; set; }
+        public GitHubPullRequest pull_request { get; set; }
+        public string closed_at { get; set; }
         public string created_at { get; set; }
         public string updated_at { get; set; }
 
@@ -27,24 +32,6 @@ namespace GitHub_XMPP.EventServices
             public string color { get; set; }
         }
 
-        public class Assignee
-        {
-            public string login { get; set; }
-            public int id { get; set; }
-            public string avatar_url { get; set; }
-            public string gravatar_id { get; set; }
-            public string url { get; set; }
-        }
-
-        public class Creator
-        {
-            public string login { get; set; }
-            public int id { get; set; }
-            public string avatar_url { get; set; }
-            public string gravatar_id { get; set; }
-            public string url { get; set; }
-        }
-
         public class Milestone
         {
             public string url { get; set; }
@@ -52,18 +39,11 @@ namespace GitHub_XMPP.EventServices
             public string state { get; set; }
             public string title { get; set; }
             public string description { get; set; }
-            public Creator creator { get; set; }
+            public GitHubUser creator { get; set; }
             public int open_issues { get; set; }
             public int closed_issues { get; set; }
             public string created_at { get; set; }
             public object due_on { get; set; }
-        }
-
-        public class PullRequest
-        {
-            public string html_url { get; set; }
-            public string diff_url { get; set; }
-            public string patch_url { get; set; }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GitHub_XMPP.EventHandlers
             var eventData = JsonConvert.DeserializeObject<GitHubPushEventData>(jsonData);
             var sb = new StringBuilder();
             sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", eventData.pusher.name,
-                                        eventData.repository.owner.name, eventData.repository.name));
+                                        eventData.repository.owner.login, eventData.repository.name));
             foreach (GitHubPushEventData.Commit commit in eventData.commits)
             {
                 sb.AppendLine(commit.GetMessageWithoutDoubledLineBreak());
