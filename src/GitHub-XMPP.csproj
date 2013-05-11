@@ -84,9 +84,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\GitHubIssueCommentEvent.cs" />
+    <Compile Include="EventHandlers\GitHubIssueCommentEventData.cs" />
+    <Compile Include="EventHandlers\GitHubUser.cs" />
+    <Compile Include="EventHandlers\IGitHubEventHandler.cs" />
+    <Compile Include="EventHandlers\GitHubIssue.cs" />
     <Compile Include="EventServices\GitHubEvent.cs" />
-    <Compile Include="EventServices\GitHubPushEvent.cs" />
-    <Compile Include="EventServices\GitHubPushEventData.cs" />
+    <Compile Include="EventHandlers\GitHubIssueEvent.cs" />
+    <Compile Include="EventHandlers\GitHubPushEvent.cs" />
+    <Compile Include="EventHandlers\GitHubPushEventData.cs" />
     <Compile Include="EventServices\HookServer.cs" />
     <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />
