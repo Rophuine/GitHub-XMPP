@@ -9,7 +9,7 @@ namespace GitHub_XMPP.Notifiers
 {
     public class XMPPClient : IEventNotifier, IDisposable
     {
-        private XmppClientConnection _connection;
+        private readonly XmppClientConnection _connection;
         private MucManager _man;
 
         private string XMPPServer
@@ -74,7 +74,9 @@ namespace GitHub_XMPP.Notifiers
 
         private void TryToReconnect()
         {
-            for (int i = 0; i < 3 && _connection.XmppConnectionState == XmppConnectionState.Disconnected; i++, Thread.Sleep(5000))
+            for (int i = 0;
+                 i < 3 && _connection.XmppConnectionState == XmppConnectionState.Disconnected;
+                 i++, Thread.Sleep(5000))
                 ConnectToXmppServer();
         }
 

@@ -11,10 +11,10 @@ namespace GitHub_XMPP.EventServices
 
         [JsonProperty(PropertyName = "compare")]
         public string compareUrl { get; set; }
-        
+
         [JsonProperty(PropertyName = "ref")]
         public string reference { get; set; }
-        
+
         public Commit[] commits { get; set; }
         public Repository repository { get; set; }
 
@@ -45,6 +45,7 @@ namespace GitHub_XMPP.EventServices
             public string[] modified { get; set; }
             public Author author { get; set; }
             public Author committer { get; set; }
+
             public string GetMessageWithoutDoubledLineBreak()
             {
                 return message.Replace("\n\n", "\n");

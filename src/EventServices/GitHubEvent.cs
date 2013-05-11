@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using GitHub_XMPP.Notifiers;
-using Nancy;
 using Nancy.TinyIoc;
 
 namespace GitHub_XMPP.EventServices

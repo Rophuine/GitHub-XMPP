@@ -88,6 +88,7 @@
     <Compile Include="EventServices\GitHubPushEvent.cs" />
     <Compile Include="EventServices\GitHubPushEventData.cs" />
     <Compile Include="EventServices\HookServer.cs" />
+    <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />
     <Compile Include="Notifiers\IEventNotifier.cs" />
     <Compile Include="Program.cs" />

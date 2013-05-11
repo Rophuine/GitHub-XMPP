@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Nancy;
-using Nancy.TinyIoc;
 
 namespace GitHub_XMPP.EventServices
 {
@@ -13,7 +12,10 @@ namespace GitHub_XMPP.EventServices
                 {
                     try
                     {
-                        string githubNotificationType = Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event").FirstOrDefault().Value.FirstOrDefault();
+                        string githubNotificationType =
+                            Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event")
+                                   .FirstOrDefault()
+                                   .Value.FirstOrDefault();
                         githubEvent.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
                         return Response.AsText("Thanks GitHub!");
                     }
