@@ -100,8 +100,9 @@
     <Compile Include="EventHandlers\GitHubIssueEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEventData.cs" />
-    <Compile Include="EventServices\GitHubPullRequestEvent.cs" />
-    <Compile Include="EventServices\GitHubPullRequestEventData.cs" />
+    <Compile Include="EventHandlers\GitHubPullRequestEvent.cs" />
+    <Compile Include="EventHandlers\GitHubPullRequestEventData.cs" />
+    <Compile Include="EventHandlers\GitHubPullRequestReviewCommentEvent.cs" />
     <Compile Include="EventServices\HookServer.cs" />
     <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />
