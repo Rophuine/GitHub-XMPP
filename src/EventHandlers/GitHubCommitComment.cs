@@ -1,4 +1,4 @@
-﻿namespace GitHub_XMPP.EventServices
+﻿namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubCommitComment
     {

@@ -1,9 +1,8 @@
 ﻿using System.Text;
-using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubIssueEvent : IGitHubEventHandler
     {

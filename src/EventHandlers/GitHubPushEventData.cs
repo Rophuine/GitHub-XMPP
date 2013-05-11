@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubPushEventData
     {
@@ -15,10 +15,10 @@ namespace GitHub_XMPP.EventServices
         [JsonProperty(PropertyName = "ref")]
         public string reference { get; set; }
 
-        public Commit[] commits { get; set; }
+        public CommitDetails[] commits { get; set; }
         public GitHubRepository repository { get; set; }
 
-        public class Commit
+        public class CommitDetails
         {
             public string id { get; set; }
             public string message { get; set; }

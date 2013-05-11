@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\GitHubCommit.cs" />
     <Compile Include="EventHandlers\GitHubIssueComment.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEvent.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEventData.cs" />
@@ -92,13 +93,15 @@
     <Compile Include="EventHandlers\GitHubUser.cs" />
     <Compile Include="EventHandlers\IGitHubEventHandler.cs" />
     <Compile Include="EventHandlers\GitHubIssue.cs" />
-    <Compile Include="EventServices\GitHubCommitComment.cs" />
-    <Compile Include="EventServices\GitHubCommitCommentEvent.cs" />
-    <Compile Include="EventServices\GitHubCommitCommentEventData.cs" />
+    <Compile Include="EventHandlers\GitHubCommitComment.cs" />
+    <Compile Include="EventHandlers\GitHubCommitCommentEvent.cs" />
+    <Compile Include="EventHandlers\GitHubCommitCommentEventData.cs" />
     <Compile Include="EventServices\GitHubEvent.cs" />
     <Compile Include="EventHandlers\GitHubIssueEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEventData.cs" />
+    <Compile Include="EventServices\GitHubPullRequestEvent.cs" />
+    <Compile Include="EventServices\GitHubPullRequestEventData.cs" />
     <Compile Include="EventServices\HookServer.cs" />
     <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />

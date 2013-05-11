@@ -12,7 +12,8 @@ namespace GitHub_XMPP.EventServices
                 {"push", typeof(GitHubPushEvent)},
                 {"issues", typeof(GitHubIssueEvent)},
                 {"issue_comment", typeof(GitHubIssueCommentEvent)},
-                {"commit_comment", typeof(GitHubCommitCommentEvent)}
+                {"commit_comment", typeof(GitHubCommitCommentEvent)},
+                {"pull_request", typeof(GitHubPullRequestEvent)}
             };
 
         public void HandleGitHubEvent(string githubHookEvent, string githubHookPayload)
