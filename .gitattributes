@@ -1,0 +1,15 @@
+# Set default crlf file handling to autocrlf for text files
+* text=auto
+
+*.sln text
+*.config text
+*.csproj text
+*.cs text
+*.proj text
+*.targets text
+*.sln.DotSettings text
+
+.gitignore text
+.gitattributes text
+
+*.exe binary
