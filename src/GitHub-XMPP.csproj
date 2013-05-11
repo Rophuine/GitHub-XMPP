@@ -92,6 +92,9 @@
     <Compile Include="EventHandlers\GitHubUser.cs" />
     <Compile Include="EventHandlers\IGitHubEventHandler.cs" />
     <Compile Include="EventHandlers\GitHubIssue.cs" />
+    <Compile Include="EventServices\GitHubCommitComment.cs" />
+    <Compile Include="EventServices\GitHubCommitCommentEvent.cs" />
+    <Compile Include="EventServices\GitHubCommitCommentEventData.cs" />
     <Compile Include="EventServices\GitHubEvent.cs" />
     <Compile Include="EventHandlers\GitHubIssueEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEvent.cs" />
