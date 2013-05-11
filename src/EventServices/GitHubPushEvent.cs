@@ -21,7 +21,7 @@ namespace GitHub_XMPP.EventServices
             sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", EventData.pusher.name, EventData.repository.owner.name, EventData.repository.name));
             foreach (var commit in EventData.commits)
             {
-                sb.AppendLine(commit.message);
+                sb.AppendLine(commit.GetMessageWithoutDoubledLineBreak());
                 sb.AppendLine(string.Format("(Committed by {0} at {1} - {2})", commit.author.username, commit.timestamp, commit.url));
             }
             sb.AppendLine(string.Format("View the entire change-set at {0}", EventData.compareUrl));

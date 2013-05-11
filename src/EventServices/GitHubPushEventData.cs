@@ -45,6 +45,10 @@ namespace GitHub_XMPP.EventServices
             public string[] modified { get; set; }
             public Author author { get; set; }
             public Author committer { get; set; }
+            public string GetMessageWithoutDoubledLineBreak()
+            {
+                return message.Replace("\n\n", "\n");
+            }
         }
 
         public class Author
