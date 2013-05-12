@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using GitHub_XMPP.GitHubDtos;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
@@ -22,14 +21,8 @@ namespace GitHub_XMPP.EventHandlers
                                         eventData.issue.number));
             string assignee = (eventData.issue.assignee != null) ? eventData.issue.assignee.login : "unassigned";
             sb.Append(string.Format("{0} - {1} ({2})", eventData.issue.title, assignee,
-                                        eventData.issue.html_url));
+                                    eventData.issue.html_url));
             _eventNotifier.SendText(sb.ToString());
         }
-    }
-
-    public class GitHubIssueEventData
-    {
-        public string action { get; set; }
-        public GitHubIssue issue { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using Nancy;
 
 namespace GitHub_XMPP.EventServices
 {
-    public class HookServer : NancyModule
+    public class GitHubHookServer : NancyModule
     {
-        public HookServer(GitHubEvent githubEvent)
+        public GitHubHookServer(GitHubEventMapper githubEventMapper)
             : base("/GitHubHooks")
         {
             Post["/event"] = parms =>
@@ -16,7 +16,7 @@ namespace GitHub_XMPP.EventServices
                             Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event")
                                    .FirstOrDefault()
                                    .Value.FirstOrDefault();
-                        githubEvent.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
+                        githubEventMapper.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
                         return Response.AsText("Thanks GitHub!");
                     }
                     catch

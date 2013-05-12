@@ -5,7 +5,7 @@ using Nancy.TinyIoc;
 
 namespace GitHub_XMPP.EventServices
 {
-    public class GitHubEvent
+    public class GitHubEventMapper
     {
         private Dictionary<string, Type> githubEventTypeMap = new Dictionary<string, Type>
             {

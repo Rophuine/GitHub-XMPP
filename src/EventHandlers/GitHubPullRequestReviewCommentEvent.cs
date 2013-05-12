@@ -6,7 +6,7 @@ namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubPullRequestReviewCommentEvent : IGitHubEventHandler
     {
-        private IEventNotifier _eventNotifier;
+        private readonly IEventNotifier _eventNotifier;
 
         public GitHubPullRequestReviewCommentEvent(IEventNotifier eventNotifier)
         {

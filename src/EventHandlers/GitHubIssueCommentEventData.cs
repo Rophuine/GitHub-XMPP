@@ -1,4 +1,3 @@
-using GitHub_XMPP.EventServices;
 using GitHub_XMPP.GitHubDtos;
 
 namespace GitHub_XMPP.EventHandlers

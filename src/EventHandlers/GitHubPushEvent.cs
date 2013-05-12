@@ -14,14 +14,16 @@ namespace GitHub_XMPP.EventHandlers
             _eventNotifier = eventNotifier;
         }
 
+        public GitHubPushEventData EventData { get; set; }
+
         public void Handle(string jsonData)
         {
-            var eventData = JsonConvert.DeserializeObject<GitHubPushEventData>(jsonData);
+            EventData = JsonConvert.DeserializeObject<GitHubPushEventData>(jsonData);
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", eventData.pusher.name,
-                                        eventData.repository.owner.login, eventData.repository.name));
+            sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", EventData.pusher.name,
+                                        EventData.repository.owner.login, EventData.repository.name));
             var count = 0;
-            foreach (GitHubPushEventData.CommitDetails commit in eventData.commits)
+            foreach (GitHubPushEventData.CommitDetails commit in EventData.commits)
             {
                 if (count < 2)
                 {
@@ -33,11 +35,11 @@ namespace GitHub_XMPP.EventHandlers
                 }
                 else
                 {
-                    sb.AppendLine(string.Format("(... {0} additional commits ...)", eventData.commits.Length - count));
+                    sb.AppendLine(string.Format("(... {0} additional commits ...)", EventData.commits.Length - count));
                     break;
                 }
             }
-            sb.Append(string.Format("View the entire change-set at {0}", eventData.compareUrl));
+            sb.Append(string.Format("View the entire change-set at {0}", EventData.compareUrl));
             _eventNotifier.SendText(sb.ToString());
         }
     }

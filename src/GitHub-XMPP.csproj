@@ -99,14 +99,14 @@
     <Compile Include="GitHubDtos\GitHubCommitComment.cs" />
     <Compile Include="EventHandlers\GitHubCommitCommentEvent.cs" />
     <Compile Include="EventHandlers\GitHubCommitCommentEventData.cs" />
-    <Compile Include="EventServices\GitHubEvent.cs" />
+    <Compile Include="EventServices\GitHubEventMapper.cs" />
     <Compile Include="EventHandlers\GitHubIssueEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEvent.cs" />
     <Compile Include="EventHandlers\GitHubPushEventData.cs" />
     <Compile Include="EventHandlers\GitHubPullRequestEvent.cs" />
     <Compile Include="EventHandlers\GitHubPullRequestEventData.cs" />
     <Compile Include="EventHandlers\GitHubPullRequestReviewCommentEvent.cs" />
-    <Compile Include="EventServices\HookServer.cs" />
+    <Compile Include="EventServices\GitHubHookServer.cs" />
     <Compile Include="GitHubDtos\WikiPageUpdateDetails.cs" />
     <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />

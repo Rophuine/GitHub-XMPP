@@ -6,7 +6,7 @@ namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubPullRequestEvent : IGitHubEventHandler
     {
-        private IEventNotifier _eventNotifier;
+        private readonly IEventNotifier _eventNotifier;
 
         public GitHubPullRequestEvent(IEventNotifier eventNotifier)
         {
@@ -19,8 +19,8 @@ namespace GitHub_XMPP.EventHandlers
 
             var sb = new StringBuilder();
             sb.Append(string.Format("{0} {1} pull request {2} on {3} ({4})", eventData.sender.login,
-                                        eventData.action, eventData.pull_request.title, eventData.repository.name,
-                                        eventData.pull_request.html_url));
+                                    eventData.action, eventData.pull_request.title, eventData.repository.name,
+                                    eventData.pull_request.html_url));
             if (!string.IsNullOrWhiteSpace(eventData.pull_request.body))
             {
                 sb.AppendLine();

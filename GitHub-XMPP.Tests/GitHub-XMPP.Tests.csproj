@@ -39,8 +39,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nancy, Version=0.17.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="NSubstitute">
       <HintPath>..\src\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\src\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Shouldly">
       <HintPath>..\src\packages\Shouldly.1.1.1.1\lib\35\Shouldly.dll</HintPath>
@@ -54,11 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GitHubPushEventDataTest.cs" />
+    <Compile Include="GitHubPushEventArrives.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SampleJson\GitHubPushJson.txt" />
+    <Content Include="SampleJson\GitHubPushJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\GitHub-XMPP.csproj">
