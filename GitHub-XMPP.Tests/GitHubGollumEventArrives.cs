@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using NSubstitute;
@@ -12,19 +9,19 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubPullRequestReviewCommentEventArrives
+    class GitHubGollumEventArrives
     {
         private IEventNotifier _notifier;
-        private GitHubPullRequestReviewCommentEvent _event;
+        private GitHubWikiUpdateEvent _event;
 
         [SetUp]
         public void Setup()
         {
             _notifier = Substitute.For<IEventNotifier>();
-            _event = new GitHubPullRequestReviewCommentEvent(_notifier);
+            _event = new GitHubWikiUpdateEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPullRequestReviewCommentJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubGollumJson.txt"));
             _event.Handle(text);
         }
 
@@ -49,17 +46,13 @@ namespace GitHub_XMPP.Tests
         }
 
         [Test]
-        public void TheCommentShouldHaveData()
+        public void ThePageDetailsShouldBeSet()
         {
-            _event.EventData.comment.ShouldNotBe(null);
-            _event.EventData.comment.body.ShouldBe("Woah. Woah, woah, woah.");
+            _event.EventData.pages.ShouldNotBe(null);
+            _event.EventData.pages.Count.ShouldBe(1);
+            _event.EventData.pages[0].title.ShouldBe("Home");
+            _event.EventData.pages[0].action.ShouldBe("edited");
         }
-
-        [Test]
-        public void TheUserShouldBeSet()
-        {
-            _event.EventData.comment.user.ShouldNotBe(null);
-            _event.EventData.comment.user.login.ShouldBe("Rophuine");
-        }
+        
     }
 }

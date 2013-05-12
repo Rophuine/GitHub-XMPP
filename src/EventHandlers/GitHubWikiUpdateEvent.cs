@@ -14,15 +14,17 @@ namespace GitHub_XMPP.EventHandlers
             _eventNotifier = eventNotifier;
         }
 
+        public GitHubWikiUpdateEventData EventData { get; set; }
+
         public void Handle(string jsonData)
         {
-            var eventData = JsonConvert.DeserializeObject<GitHubWikiUpdateEventData>(jsonData);
+            EventData = JsonConvert.DeserializeObject<GitHubWikiUpdateEventData>(jsonData);
 
             var sb = new StringBuilder();
             sb.Append(string.Format("{0} has made the following changes to the wiki for {1}{2}:",
-                                    eventData.sender.login, eventData.repository.owner.login,
-                                    eventData.repository.name));
-            foreach (WikiPageUpdateDetails pageUpdate in eventData.pages)
+                                    EventData.sender.login, EventData.repository.owner.login,
+                                    EventData.repository.name));
+            foreach (WikiPageUpdateDetails pageUpdate in EventData.pages)
             {
                 sb.AppendLine();
                 sb.Append(string.Format("{0} {1} {2} ({3})", pageUpdate.action, pageUpdate.page_name,

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using NSubstitute;
@@ -12,19 +9,19 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubPullRequestEventArrives
+    class GitHubIssueCommentEventArrives
     {
         private IEventNotifier _notifier;
-        private GitHubPullRequestEvent _event;
+        private GitHubIssueCommentEvent _event;
 
         [SetUp]
         public void Setup()
         {
             _notifier = Substitute.For<IEventNotifier>();
-            _event = new GitHubPullRequestEvent(_notifier);
+            _event = new GitHubIssueCommentEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPullRequestJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubIssueCommentJson.txt"));
             _event.Handle(text);
         }
 
@@ -37,14 +34,21 @@ namespace GitHub_XMPP.Tests
         [Test]
         public void TheActionShouldBeSet()
         {
-            _event.EventData.action.ShouldBe("synchronize");
+            _event.EventData.action.ShouldBe("created");
         }
 
         [Test]
-        public void TheRepoShouldBeSet()
+        public void TheIssueShouldBeSet()
         {
-            _event.EventData.repository.ShouldNotBe(null);
-            _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");
+            _event.EventData.issue.ShouldNotBe(null);
+            _event.EventData.issue.title.ShouldBe("New issue for testing");
+        }
+
+        [Test]
+        public void TheUserShouldBeSet()
+        {
+            _event.EventData.issue.user.ShouldNotBe(null);
+            _event.EventData.issue.user.login.ShouldBe("Rophuine");
         }
 
         [Test]
@@ -55,11 +59,10 @@ namespace GitHub_XMPP.Tests
         }
 
         [Test]
-        public void ThePullRequestDetailsShouldBeSet()
+        public void TheRepoShouldBeSet()
         {
-            _event.EventData.pull_request.ShouldNotBe(null);
-            _event.EventData.pull_request.commits.ShouldBe(3);
-            _event.EventData.pull_request.title.ShouldBe("test");
+            _event.EventData.repository.ShouldNotBe(null);
+            _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");
         }
     }
 }

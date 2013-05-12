@@ -11,6 +11,7 @@ using Shouldly;
 
 namespace GitHub_XMPP.Tests
 {
+    [TestFixture]
     class GitHubIssueEventArrives
     {
         private IEventNotifier _notifier;

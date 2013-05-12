@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GitHubCommitCommentEventArrives.cs" />
+    <Compile Include="GitHubGollumEventArrives.cs" />
+    <Compile Include="GitHubIssueCommentEventArrives.cs" />
     <Compile Include="GitHubIssueEventArrives.cs" />
     <Compile Include="GitHubPullRequestEventArrives.cs" />
     <Compile Include="GitHubPullRequestReviewCommentEventArrives.cs" />
@@ -66,6 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SampleJson\DummyGitHubPushJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubCommitCommentJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubGollumJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubIssueCommentJson.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleJson\GitHubIssueJson.txt">
