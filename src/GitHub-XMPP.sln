@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6FBA11
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub-XMPP.Tests", "..\GitHub-XMPP.Tests\GitHub-XMPP.Tests.csproj", "{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubHookConfigurator", "GitHubHookConfigurator\GitHubHookConfigurator.csproj", "{4F6DCF3E-3D2C-48C0-925E-A484A01EC5E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -26,6 +28,10 @@ Global
 		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Debug|x86.Build.0 = Debug|x86
 		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Release|x86.ActiveCfg = Release|x86
 		{D1D16A41-27AA-46BC-B4AD-47CA2BA3A485}.Release|x86.Build.0 = Release|x86
+		{4F6DCF3E-3D2C-48C0-925E-A484A01EC5E0}.Debug|x86.ActiveCfg = Debug|x86
+		{4F6DCF3E-3D2C-48C0-925E-A484A01EC5E0}.Debug|x86.Build.0 = Debug|x86
+		{4F6DCF3E-3D2C-48C0-925E-A484A01EC5E0}.Release|x86.ActiveCfg = Release|x86
+		{4F6DCF3E-3D2C-48C0-925E-A484A01EC5E0}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

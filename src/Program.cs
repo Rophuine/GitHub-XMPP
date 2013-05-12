@@ -9,7 +9,7 @@ namespace GitHub_XMPP
     {
         private static void Main(string[] args)
         {
-            GitHubHookInstaller.InstallGitHubHooks();
+            GitHubHookInstaller.InstallGitHubHooksUsingAppConfig();
             IoCInstaller.Install();
             var host = new NancyHost(new[] {new Uri("http://localhost:6893")});
             try

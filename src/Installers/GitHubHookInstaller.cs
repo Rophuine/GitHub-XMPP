@@ -7,7 +7,7 @@ using RestSharp;
 
 namespace GitHub_XMPP.Installers
 {
-    public static class GitHubHookInstaller
+    public class GitHubHookInstaller
     {
         private static string GitHubUsername
         {
@@ -29,16 +29,17 @@ namespace GitHub_XMPP.Installers
             get { return ConfigurationManager.AppSettings["GitHubRepo"]; }
         }
 
-        public static void InstallGitHubHooks()
+        public static void InstallGitHubHooksUsingAppConfig()
         {
             if (!string.IsNullOrWhiteSpace(GitHubUsername) && !string.IsNullOrWhiteSpace(GitHubPassword))
             {
                 try
                 {
+                    var hookInstaller = new GitHubHookInstaller(GitHubUsername, GitHubPassword);
                     if (string.IsNullOrWhiteSpace(GitHubHookId))
                     {
                         Console.WriteLine("Attempting to get the list of github hooks so you can choose one...");
-                        List<GitHubHookResponse> hooks = GetAllGitHubHooks();
+                        List<GitHubHookResponse> hooks = hookInstaller.GetAllGitHubHooks(GitHubUsername, GitHubRepo);
                         foreach (GitHubHookResponse hook in hooks)
                         {
                             Console.WriteLine(string.Format("Hook Id {0}: {1} {2}", hook.id, hook.name, hook.config.url));
@@ -48,7 +49,7 @@ namespace GitHub_XMPP.Installers
                     }
                     else
                     {
-                        ConfigureHook();
+                        hookInstaller.ConfigureHook(GitHubHookId, GitHubUsername, GitHubRepo);
                     }
                 }
                 finally
@@ -59,7 +60,14 @@ namespace GitHub_XMPP.Installers
             }
         }
 
-        private static void ConfigureHook()
+        private readonly RestClient _gitHubClient;
+
+        public GitHubHookInstaller(string gitHubUsername, string gitHubPassword)
+        {
+            _gitHubClient = GetNewGitHubClient(gitHubUsername, gitHubPassword);
+        }
+
+        public void ConfigureHook(string gitHubHookId, string gitHubUsername, string gitHubRepo)
         {
             var config = new HookSettings();
             config.active = true;
@@ -82,13 +90,12 @@ namespace GitHub_XMPP.Installers
                     "status",
                 };
             string json = JsonConvert.SerializeObject(config);
-            RestClient client = GetNewGitHubClient();
             var request =
-                new RestRequest(string.Format("/repos/{0}/{1}/hooks/{2}", GitHubUsername, GitHubRepo, GitHubHookId),
+                new RestRequest(string.Format("/repos/{0}/{1}/hooks/{2}", gitHubUsername, gitHubRepo, gitHubHookId),
                                 Method.PATCH);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(config);
-            IRestResponse response = client.Execute(request);
+            IRestResponse response = _gitHubClient.Execute(request);
             if (!string.IsNullOrWhiteSpace(response.ErrorMessage) || response.StatusCode != HttpStatusCode.OK)
             {
                 Console.WriteLine(string.Format("Encountered an error trying to reconfigure the hook: {0}",
@@ -98,11 +105,10 @@ namespace GitHub_XMPP.Installers
             Console.WriteLine("I have reconfigured the hook - you should get notifications for all events now.");
         }
 
-        private static List<GitHubHookResponse> GetAllGitHubHooks()
+        public List<GitHubHookResponse> GetAllGitHubHooks(string gitHubUsername, string gitHubRepo)
         {
-            RestClient client = GetNewGitHubClient();
-            var request = new RestRequest(string.Format("/repos/{0}/{1}/hooks", GitHubUsername, GitHubRepo), Method.GET);
-            IRestResponse<List<GitHubHookResponse>> response = client.Get<List<GitHubHookResponse>>(request);
+            var request = new RestRequest(string.Format("/repos/{0}/{1}/hooks", gitHubUsername, gitHubRepo), Method.GET);
+            IRestResponse<List<GitHubHookResponse>> response = _gitHubClient.Get<List<GitHubHookResponse>>(request);
             if (!string.IsNullOrWhiteSpace(response.ErrorMessage) || response.StatusCode != HttpStatusCode.OK)
             {
                 Console.WriteLine(string.Format("Encountered an error trying to get the list of hooks: {0}",
@@ -118,10 +124,10 @@ namespace GitHub_XMPP.Installers
             return response.Data;
         }
 
-        private static RestClient GetNewGitHubClient()
+        private static RestClient GetNewGitHubClient(string gitHubUsername, string gitHubPassword)
         {
             var client = new RestClient("https://api.github.com");
-            IAuthenticator auth = new HttpBasicAuthenticator(GitHubUsername, GitHubPassword);
+            IAuthenticator auth = new HttpBasicAuthenticator(gitHubUsername, gitHubPassword);
             client.Authenticator = auth;
             return client;
         }
@@ -132,21 +138,21 @@ namespace GitHub_XMPP.Installers
             public string[] events { get; set; }
         }
 
-        private class Config
+        public class Config
         {
             public string url { get; set; }
             public string content_type { get; set; }
             public string insecure_ssl { get; set; }
         }
 
-        private class LastResponse
+        public class LastResponse
         {
             public int code { get; set; }
             public string status { get; set; }
             public string message { get; set; }
         }
 
-        private class GitHubHookResponse
+        public class GitHubHookResponse
         {
             public string url { get; set; }
             public string test_url { get; set; }

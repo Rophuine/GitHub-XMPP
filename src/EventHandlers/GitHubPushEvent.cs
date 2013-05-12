@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using GitHub_XMPP.EventServices;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
@@ -22,7 +21,7 @@ namespace GitHub_XMPP.EventHandlers
             var sb = new StringBuilder();
             sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", EventData.pusher.name,
                                         EventData.repository.owner.login, EventData.repository.name));
-            var count = 0;
+            int count = 0;
             foreach (GitHubPushEventData.CommitDetails commit in EventData.commits)
             {
                 if (count < 2)

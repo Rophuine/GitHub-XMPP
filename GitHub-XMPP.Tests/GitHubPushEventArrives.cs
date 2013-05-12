@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using NSubstitute;
@@ -12,8 +11,8 @@ namespace GitHub_XMPP.Tests
     [TestFixture]
     internal class GitHubPushEventArrives
     {
-        IEventNotifier _notifier;
-        GitHubPushEvent _pushEvent;
+        private IEventNotifier _notifier;
+        private GitHubPushEvent _pushEvent;
 
         [SetUp]
         public void Setup()
@@ -21,7 +20,8 @@ namespace GitHub_XMPP.Tests
             _notifier = Substitute.For<IEventNotifier>();
             _pushEvent = new GitHubPushEvent(_notifier);
 
-            string text = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPushJson.txt"));
+            string text =
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPushJson.txt"));
             _pushEvent.Handle(text);
         }
 
