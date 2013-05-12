@@ -13,15 +13,17 @@ namespace GitHub_XMPP.EventHandlers
             _eventNotifier = eventNotifier;
         }
 
+        public GitHubIssueEventData EventData { get; set; }
+
         public void Handle(string jsonData)
         {
-            var eventData = JsonConvert.DeserializeObject<GitHubIssueEventData>(jsonData);
+            EventData = JsonConvert.DeserializeObject<GitHubIssueEventData>(jsonData);
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} just {1} issue {2}", eventData.issue.user.login, eventData.action,
-                                        eventData.issue.number));
-            string assignee = (eventData.issue.assignee != null) ? eventData.issue.assignee.login : "unassigned";
-            sb.Append(string.Format("{0} - {1} ({2})", eventData.issue.title, assignee,
-                                    eventData.issue.html_url));
+            sb.AppendLine(string.Format("{0} just {1} issue {2}", EventData.issue.user.login, EventData.action,
+                                        EventData.issue.number));
+            string assignee = (EventData.issue.assignee != null) ? EventData.issue.assignee.login : "unassigned";
+            sb.Append(string.Format("{0} - {1} ({2})", EventData.issue.title, assignee,
+                                    EventData.issue.html_url));
             _eventNotifier.SendText(sb.ToString());
         }
     }

@@ -12,17 +12,17 @@ namespace GitHub_XMPP.Tests
     internal class GitHubPushEventArrives
     {
         private IEventNotifier _notifier;
-        private GitHubPushEvent _pushEvent;
+        private GitHubPushEvent _event;
 
         [SetUp]
         public void Setup()
         {
             _notifier = Substitute.For<IEventNotifier>();
-            _pushEvent = new GitHubPushEvent(_notifier);
+            _event = new GitHubPushEvent(_notifier);
 
             string text =
                 File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPushJson.txt"));
-            _pushEvent.Handle(text);
+            _event.Handle(text);
         }
 
         [Test]
@@ -34,8 +34,23 @@ namespace GitHub_XMPP.Tests
         [Test]
         public void TheEventDataShouldIncludeAPusher()
         {
-            _pushEvent.EventData.pusher.ShouldNotBe(null);
-            _pushEvent.EventData.pusher.name.ShouldBe("none");
+            _event.EventData.pusher.ShouldNotBe(null);
+            _event.EventData.pusher.name.ShouldBe("Rophuine");
+            _event.EventData.pusher.email.ShouldBe("owner@example.com");
+        }
+
+        [Test]
+        public void TheRepoShouldBeSet()
+        {
+            _event.EventData.repository.ShouldNotBe(null);
+            _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");            
+        }
+
+        [Test]
+        public void TheDataShouldIncludeCommits()
+        {
+            _event.EventData.commits.Length.ShouldBe(2);
+            _event.EventData.commits[0].message.ShouldBe("Readme change");            
         }
     }
 }

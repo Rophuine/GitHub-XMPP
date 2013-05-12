@@ -13,16 +13,17 @@ namespace GitHub_XMPP.EventHandlers
             _eventNotifier = eventNotifier;
         }
 
+        public GitHubPullRequestReviewCommentEventData EventData { get; set; }
 
         public void Handle(string jsonData)
         {
-            var eventData = JsonConvert.DeserializeObject<GitHubPullRequestReviewCommentEventData>(jsonData);
+            EventData = JsonConvert.DeserializeObject<GitHubPullRequestReviewCommentEventData>(jsonData);
 
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} has commented on a pull request on {1}/{2} ({3})", eventData.sender.login,
-                                        eventData.repository.owner.login, eventData.repository.name,
-                                        eventData.comment.html_url));
-            sb.Append(eventData.comment.body);
+            sb.AppendLine(string.Format("{0} has commented on a pull request on {1}/{2} ({3})", EventData.sender.login,
+                                        EventData.repository.owner.login, EventData.repository.name,
+                                        EventData.comment.html_url));
+            sb.Append(EventData.comment.body);
 
             _eventNotifier.SendText(sb.ToString());
         }
