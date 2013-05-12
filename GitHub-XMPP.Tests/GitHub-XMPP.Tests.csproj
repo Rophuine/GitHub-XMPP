@@ -63,6 +63,8 @@
     <Compile Include="GitHubGollumEventArrives.cs" />
     <Compile Include="GitHubIssueCommentEventArrives.cs" />
     <Compile Include="GitHubIssueEventArrives.cs" />
+    <Compile Include="GitHubMemberEventArrives.cs" />
+    <Compile Include="GitHubPublicEventArrives.cs" />
     <Compile Include="GitHubPullRequestEventArrives.cs" />
     <Compile Include="GitHubPullRequestReviewCommentEventArrives.cs" />
     <Compile Include="GitHubPushEventArrives.cs" />
@@ -85,6 +87,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleJson\GitHubIssueJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubMemberJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubPublicJson.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleJson\GitHubPullRequestJson.txt">

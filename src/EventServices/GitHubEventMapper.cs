@@ -19,6 +19,9 @@ namespace GitHub_XMPP.EventServices
                 //{"watch", typeof(GitHubRepoWatchEvent)},  // GitHub doesn't seem to send these!
                 //{"download", typeof(GitHubDownloadAddedEvent)},   // GitHub has deprecated downloads!
                 {"fork", typeof(GitHubForkEvent)},
+                //{"fork_apply", typeof(GitHubForkApplyEvent)}, // I think GitHub has deprecated the fork queue.
+                {"member", typeof(GitHubMemberEvent)},
+                {"public", typeof(GitHubPublicEvent)},
             };
 
         public void HandleGitHubEvent(string githubHookEvent, string githubHookPayload)

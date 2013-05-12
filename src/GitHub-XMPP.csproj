@@ -86,6 +86,9 @@
   <ItemGroup>
     <Compile Include="EventHandlers\GitHubForkEventData.cs" />
     <Compile Include="EventHandlers\GitHubIssueEventData.cs" />
+    <Compile Include="EventHandlers\GitHubMemberEvent.cs" />
+    <Compile Include="EventHandlers\GitHubPublicEvent.cs" />
+    <Compile Include="EventHandlers\GitHubPublicEventData.cs" />
     <Compile Include="EventHandlers\GitHubWikiUpdateEvent.cs" />
     <Compile Include="EventHandlers\GitHubWikiUpdateEventData.cs" />
     <Compile Include="EventHandlers\GitHubForkEvent.cs" />
