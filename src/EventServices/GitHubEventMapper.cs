@@ -16,6 +16,9 @@ namespace GitHub_XMPP.EventServices
                 {"pull_request", typeof (GitHubPullRequestEvent)},
                 {"pull_request_review_comment", typeof (GitHubPullRequestReviewCommentEvent)},
                 {"gollum", typeof (GitHubWikiUpdateEvent)},
+                //{"watch", typeof(GitHubRepoWatchEvent)},  // GitHub doesn't seem to send these!
+                //{"download", typeof(GitHubDownloadAddedEvent)},   // GitHub has deprecated downloads!
+                {"fork", typeof(GitHubForkEvent)},
             };
 
         public void HandleGitHubEvent(string githubHookEvent, string githubHookPayload)

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GitHubCommitCommentEventArrives.cs" />
+    <Compile Include="GitHubForkEventArrives.cs" />
     <Compile Include="GitHubGollumEventArrives.cs" />
     <Compile Include="GitHubIssueCommentEventArrives.cs" />
     <Compile Include="GitHubIssueEventArrives.cs" />
@@ -72,6 +73,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleJson\GitHubCommitCommentJson.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleJson\GitHubForkJson.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleJson\GitHubGollumJson.txt">

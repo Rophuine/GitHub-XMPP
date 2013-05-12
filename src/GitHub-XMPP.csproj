@@ -84,9 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\GitHubForkEventData.cs" />
     <Compile Include="EventHandlers\GitHubIssueEventData.cs" />
     <Compile Include="EventHandlers\GitHubWikiUpdateEvent.cs" />
     <Compile Include="EventHandlers\GitHubWikiUpdateEventData.cs" />
+    <Compile Include="EventHandlers\GitHubForkEvent.cs" />
     <Compile Include="GitHubDtos\GitHubCommit.cs" />
     <Compile Include="GitHubDtos\GitHubIssueComment.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEvent.cs" />
