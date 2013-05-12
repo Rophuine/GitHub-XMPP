@@ -27,11 +27,4 @@ namespace GitHub_XMPP.EventHandlers
             _eventNotifier.SendText(sb.ToString());
         }
     }
-
-    public class GitHubPullRequestReviewCommentEventData
-    {
-        public GitHubPullRequestComment comment { get; set; }
-        public GitHubRepository repository { get; set; }
-        public GitHubUser sender { get; set; }        
-    }
 }

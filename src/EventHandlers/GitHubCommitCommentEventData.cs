@@ -1,4 +1,6 @@
-﻿namespace GitHub_XMPP.EventHandlers
+﻿using GitHub_XMPP.GitHubDtos;
+
+namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubCommitCommentEventData
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using GitHub_XMPP.GitHubDtos;
 using Newtonsoft.Json;
 
 namespace GitHub_XMPP.EventHandlers

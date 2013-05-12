@@ -1,6 +1,4 @@
-using GitHub_XMPP.EventServices;
-
-namespace GitHub_XMPP.EventHandlers
+namespace GitHub_XMPP.GitHubDtos
 {
     public class GitHubIssueComment
     {

@@ -84,16 +84,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventHandlers\GitHubCommit.cs" />
-    <Compile Include="EventHandlers\GitHubIssueComment.cs" />
+    <Compile Include="EventHandlers\GitHubWikiUpdateEvent.cs" />
+    <Compile Include="GitHubDtos\GitHubCommit.cs" />
+    <Compile Include="GitHubDtos\GitHubIssueComment.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEvent.cs" />
     <Compile Include="EventHandlers\GitHubIssueCommentEventData.cs" />
-    <Compile Include="EventHandlers\GitHubPullRequest.cs" />
-    <Compile Include="EventHandlers\GitHubRepository.cs" />
-    <Compile Include="EventHandlers\GitHubUser.cs" />
+    <Compile Include="GitHubDtos\GitHubPullRequest.cs" />
+    <Compile Include="EventHandlers\GitHubPullRequestReviewCommentEventData.cs" />
+    <Compile Include="GitHubDtos\GitHubPullRequestComment.cs" />
+    <Compile Include="GitHubDtos\GitHubRepository.cs" />
+    <Compile Include="GitHubDtos\GitHubUser.cs" />
     <Compile Include="EventHandlers\IGitHubEventHandler.cs" />
-    <Compile Include="EventHandlers\GitHubIssue.cs" />
-    <Compile Include="EventHandlers\GitHubCommitComment.cs" />
+    <Compile Include="GitHubDtos\GitHubIssue.cs" />
+    <Compile Include="GitHubDtos\GitHubCommitComment.cs" />
     <Compile Include="EventHandlers\GitHubCommitCommentEvent.cs" />
     <Compile Include="EventHandlers\GitHubCommitCommentEventData.cs" />
     <Compile Include="EventServices\GitHubEvent.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="EventHandlers\GitHubPullRequestEventData.cs" />
     <Compile Include="EventHandlers\GitHubPullRequestReviewCommentEvent.cs" />
     <Compile Include="EventServices\HookServer.cs" />
+    <Compile Include="GitHubDtos\WikiPageUpdateDetails.cs" />
     <Compile Include="Installers\GitHubHookInstaller.cs" />
     <Compile Include="Installers\IoCInstaller.cs" />
     <Compile Include="Notifiers\IEventNotifier.cs" />

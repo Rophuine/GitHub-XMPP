@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using GitHub_XMPP.GitHubDtos;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
