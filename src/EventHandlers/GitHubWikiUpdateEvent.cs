@@ -21,9 +21,8 @@ namespace GitHub_XMPP.EventHandlers
             EventData = JsonConvert.DeserializeObject<GitHubWikiUpdateEventData>(jsonData);
 
             var sb = new StringBuilder();
-            sb.Append(string.Format("{0} has made the following changes to the wiki for {1}{2}:",
-                                    EventData.sender.login, EventData.repository.owner.login,
-                                    EventData.repository.name));
+            sb.Append(string.Format("{0} has made the following changes to the wiki for {1}:",
+                                    EventData.sender.login, EventData.repository.full_name));
             foreach (WikiPageUpdateDetails pageUpdate in EventData.pages)
             {
                 sb.AppendLine();

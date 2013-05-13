@@ -69,6 +69,7 @@
     <Compile Include="GitHubPullRequestReviewCommentEventArrives.cs" />
     <Compile Include="GitHubPushEventArrives.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeeBotResponses.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SampleJson\DummyGitHubPushJson.txt">
