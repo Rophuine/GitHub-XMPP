@@ -140,8 +140,8 @@
     <Compile Include="XMPP\Bot\Counter.cs" />
     <Compile Include="XMPP\Bot\GitBot.cs" />
     <Compile Include="XMPP\Bot\TweetSearcher.cs" />
-    <Compile Include="XMPP\GroupChatMessageArrived.cs" />
-    <Compile Include="XMPP\GroupChatScriptHandler.cs" />
+    <Compile Include="XMPP\Events\GroupChatMessageArrived.cs" />
+    <Compile Include="XMPP\Scripting\GroupChatScriptHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

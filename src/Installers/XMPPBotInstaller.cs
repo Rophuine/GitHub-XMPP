@@ -17,7 +17,8 @@ namespace GitHub_XMPP.Installers
                 Classes.FromAssemblyContaining<GitBot>()
                        .BasedOn(typeof (GitBot))
                        .LifestyleSingleton()
-                       .WithServiceBase());
+                       .WithServiceBase()
+                       .WithServiceSelf());
         }
     }
 }
