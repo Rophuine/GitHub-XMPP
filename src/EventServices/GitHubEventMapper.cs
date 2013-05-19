@@ -27,8 +27,16 @@ namespace GitHub_XMPP.EventServices
         public void HandleGitHubEvent(string githubHookEvent, string githubHookPayload)
         {
             WindsorContainer container = IoC.Container;
-            var handler = container.Resolve(githubEventTypeMap[githubHookEvent]) as IGitHubEventHandler;
-            if (handler != null) handler.Handle(githubHookPayload);
+            var handler = container.Resolve(githubEventTypeMap[githubHookEvent]);
+            try
+            {
+                var githubHandler = handler as IGitHubEventHandler;
+                if (githubHandler != null) githubHandler.Handle(githubHookPayload);
+            }
+            finally
+            {
+                container.Release(handler);
+            }
         }
     }
 }

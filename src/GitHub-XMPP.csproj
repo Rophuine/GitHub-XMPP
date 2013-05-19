@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Installers\DomainEventsInstaller.cs" />
     <Compile Include="Installers\GitHubEventInstaller.cs" />
+    <Compile Include="Installers\XMPPBotInstaller.cs" />
     <Compile Include="Installers\XMPPMessengerInstaller.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="EventHandlers\GitHubForkEventData.cs" />
@@ -136,6 +137,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Notifiers\XMPPClient.cs" />
+    <Compile Include="XMPP\Bot\Counter.cs" />
+    <Compile Include="XMPP\Bot\GitBot.cs" />
+    <Compile Include="XMPP\Bot\TweetSearcher.cs" />
     <Compile Include="XMPP\GroupChatMessageArrived.cs" />
     <Compile Include="XMPP\GroupChatScriptHandler.cs" />
   </ItemGroup>
