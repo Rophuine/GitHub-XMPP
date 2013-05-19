@@ -6,6 +6,16 @@ namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubPushEventData
     {
+        public string GetBranchName()
+        {
+            return reference.Substring(reference.LastIndexOf('/') + 1);
+        }
+
+        public string GetBranchUrl()
+        {
+            return repository.url + "/commits/" + GetBranchName();
+        }
+
         public string before { get; set; }
         public string after { get; set; }
         public Author pusher { get; set; }

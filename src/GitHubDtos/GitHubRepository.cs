@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace GitHub_XMPP.GitHubDtos
 {
     public class GitHubRepository
     {
+        private string _fullName;
         public string name { get; set; }
         public string url { get; set; }
         public string pledgie { get; set; }
@@ -13,7 +15,23 @@ namespace GitHub_XMPP.GitHubDtos
         public int forks { get; set; }
 
         public int id { get; set; }
-        public string full_name { get; set; }
+
+        public string full_name
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(_fullName)) return _fullName;
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+                    Regex nameFinder = new Regex(".*github.com/(.*)");
+                    if (nameFinder.IsMatch(url))
+                        return nameFinder.Match(url).Groups[1].ToString();
+                }
+                return "";
+            }
+            set { _fullName = value; }
+        }
+
         public GitHubUser owner { get; set; }
         public string html_url { get; set; }
         public bool fork { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
@@ -19,27 +20,20 @@ namespace GitHub_XMPP.EventHandlers
         {
             EventData = JsonConvert.DeserializeObject<GitHubPushEventData>(jsonData);
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} has pushed new commits to {1}/{2}:", EventData.pusher.name,
-                                        EventData.repository.owner.login, EventData.repository.name));
-            int count = 0;
-            foreach (GitHubPushEventData.CommitDetails commit in EventData.commits)
-            {
-                if (count < 2)
-                {
-                    count++;
-                    sb.AppendLine(commit.GetMessageWithoutDoubledLineBreak());
-                    sb.AppendLine(string.Format("(Committed by {0} at {1} - {2})", commit.author.username,
-                                                commit.timestamp,
-                                                commit.url));
-                }
-                else
-                {
-                    sb.AppendLine(string.Format("(... {0} additional commits ...)", EventData.commits.Length - count));
-                    break;
-                }
-            }
-            sb.Append(string.Format("View the entire change-set at {0}", EventData.compareUrl));
+            var branch = EventData.GetBranchName();
+            sb.AppendLine(string.Format("{0} has pushed new commits to {1} on {2}:", EventData.pusher.name,
+                                        EventData.repository.full_name, branch));
+            var firstCommit = EventData.commits.First();
+            sb.Append(firstCommit.GetMessageWithoutDoubledLineBreak());
+            if (EventData.commits.Length > 1)
+                sb.AppendLine(string.Format(" (... and {0} additional commits ...)", EventData.commits.Length - 1));
+            else sb.AppendLine();
+
+            var branchUrl = EventData.GetBranchUrl();
+            sb.Append(string.Format("View the latest commits to {0} at {1}", branch, branchUrl));
+
             _eventNotifier.SendText(sb.ToString());
         }
+
     }
 }
