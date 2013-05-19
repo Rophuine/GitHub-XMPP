@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using NSubstitute;
@@ -12,7 +9,7 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubIssueEventArrives
+    internal class GitHubIssueEventArrives
     {
         private IEventNotifier _notifier;
         private GitHubIssueEvent _event;

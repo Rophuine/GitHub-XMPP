@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using GitHub_XMPP.EventHandlers;
 using GitHub_XMPP.Notifiers;
 using NSubstitute;
@@ -12,7 +9,7 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubPullRequestEventArrives
+    internal class GitHubPullRequestEventArrives
     {
         private IEventNotifier _notifier;
         private GitHubPullRequestEvent _event;
@@ -24,7 +21,8 @@ namespace GitHub_XMPP.Tests
             _event = new GitHubPullRequestEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubPullRequestJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson",
+                                              "GitHubPullRequestJson.txt"));
             _event.Handle(text);
         }
 

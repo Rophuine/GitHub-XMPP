@@ -9,7 +9,7 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubGollumEventArrives
+    internal class GitHubGollumEventArrives
     {
         private IEventNotifier _notifier;
         private GitHubWikiUpdateEvent _event;
@@ -21,7 +21,8 @@ namespace GitHub_XMPP.Tests
             _event = new GitHubWikiUpdateEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubGollumJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson",
+                                              "GitHubGollumJson.txt"));
             _event.Handle(text);
         }
 
@@ -53,6 +54,5 @@ namespace GitHub_XMPP.Tests
             _event.EventData.pages[0].title.ShouldBe("Home");
             _event.EventData.pages[0].action.ShouldBe("edited");
         }
-        
     }
 }

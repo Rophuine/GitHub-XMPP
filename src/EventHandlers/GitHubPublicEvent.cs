@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
@@ -9,7 +6,7 @@ namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubPublicEvent : IGitHubEventHandler
     {
-        private IEventNotifier _eventNotifier;
+        private readonly IEventNotifier _eventNotifier;
 
         public GitHubPublicEvent(IEventNotifier eventNotifier)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Castle.Windsor;
 using GitHub_XMPP.EventHandlers;
-using Nancy.TinyIoc;
 
 namespace GitHub_XMPP.EventServices
 {
@@ -18,15 +18,15 @@ namespace GitHub_XMPP.EventServices
                 {"gollum", typeof (GitHubWikiUpdateEvent)},
                 //{"watch", typeof(GitHubRepoWatchEvent)},  // GitHub doesn't seem to send these!
                 //{"download", typeof(GitHubDownloadAddedEvent)},   // GitHub has deprecated downloads!
-                {"fork", typeof(GitHubForkEvent)},
+                {"fork", typeof (GitHubForkEvent)},
                 //{"fork_apply", typeof(GitHubForkApplyEvent)}, // I think GitHub has deprecated the fork queue.
-                {"member", typeof(GitHubMemberEvent)},
-                {"public", typeof(GitHubPublicEvent)},
+                {"member", typeof (GitHubMemberEvent)},
+                {"public", typeof (GitHubPublicEvent)},
             };
 
         public void HandleGitHubEvent(string githubHookEvent, string githubHookPayload)
         {
-            TinyIoCContainer container = TinyIoCContainer.Current;
+            WindsorContainer container = IoC.Container;
             var handler = container.Resolve(githubEventTypeMap[githubHookEvent]) as IGitHubEventHandler;
             if (handler != null) handler.Handle(githubHookPayload);
         }

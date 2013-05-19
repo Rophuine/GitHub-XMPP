@@ -21,7 +21,8 @@ namespace GitHub_XMPP.Tests
             _event = new GitHubMemberEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubMemberJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson",
+                                              "GitHubMemberJson.txt"));
             _event.Handle(text);
         }
 

@@ -9,7 +9,7 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubIssueCommentEventArrives
+    internal class GitHubIssueCommentEventArrives
     {
         private IEventNotifier _notifier;
         private GitHubIssueCommentEvent _event;
@@ -21,7 +21,8 @@ namespace GitHub_XMPP.Tests
             _event = new GitHubIssueCommentEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubIssueCommentJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson",
+                                              "GitHubIssueCommentJson.txt"));
             _event.Handle(text);
         }
 

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading;
+using GitHub_XMPP.EventServices;
+using GitHub_XMPP.XMPP;
 using agsXMPP;
+using agsXMPP.Collections;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 
@@ -56,6 +59,7 @@ namespace GitHub_XMPP.Notifiers
         {
             _connection = new XmppClientConnection(XMPPServer);
             _connection.OnLogin += ConnectionOnLogin;
+            _connection.OnMessage += OnMessage;
             ConnectToXmppServer();
         }
 
@@ -72,6 +76,34 @@ namespace GitHub_XMPP.Notifiers
             _connection.Send(msg);
         }
 
+        private void OnMessage(object sender, Message msg)
+        {
+            if (msg.Type == MessageType.groupchat)
+            {
+                return; // We have a separate group-chat handler
+            }
+            // TODO: Handle non-group messages
+        }
+
+        private void OnGroupChatMessage(object sender, Message msg, object data)
+        {
+            var room = data as string;
+            if (msg.Type == MessageType.groupchat && msg.From.ToString().ToLower() != GitBotJidString.ToLower())
+                IncomingGroupMessage(msg, room);
+        }
+
+        public void IncomingGroupMessage(Message msg, string room)
+        {
+            if (msg.Subject != null)
+            {
+                // TODO: Handle room subject change
+            }
+            if (msg.Body != null)
+            {
+                DomainEvents.Raise(new GroupChatMessageArrived(msg, room));
+            }
+        }
+
         private void TryToReconnect()
         {
             for (int i = 0;
@@ -82,8 +114,17 @@ namespace GitHub_XMPP.Notifiers
 
         private void ConnectionOnLogin(object sender)
         {
+            // Set up the room message callback
+            var roomJid = new Jid(RoomJidString.ToLower());
+            _connection.MessageGrabber.Add(roomJid, new BareJidComparer(), OnGroupChatMessage, XMPPRoom);
+
             _man = new MucManager(_connection);
             _man.JoinRoom(GitBotJidString, XMPPUser, XMPPRoomPassword, true);
+            /*Presence pres = new Presence();
+            Jid to = new Jid(RoomJidString);
+            to.Resource = XMPPUser;
+            pres.To = to;
+            _connection.Send(pres);*/
         }
 
         public bool Disposed { get; protected set; }
@@ -94,6 +135,12 @@ namespace GitHub_XMPP.Notifiers
             {
                 Disposed = true;
                 _man.LeaveRoom(GitBotJidString, XMPPUser);
+                /*Presence pres = new Presence();
+                Jid to = new Jid(RoomJidString);
+                to.Resource = XMPPUser;
+                pres.To = to;
+                pres.Type = PresenceType.unavailable;
+                _connection.Send(pres);*/
             }
         }
     }

@@ -9,7 +9,7 @@ using Shouldly;
 namespace GitHub_XMPP.Tests
 {
     [TestFixture]
-    class GitHubCommitCommentEventArrives
+    internal class GitHubCommitCommentEventArrives
     {
         private IEventNotifier _notifier;
         private GitHubCommitCommentEvent _event;
@@ -21,7 +21,8 @@ namespace GitHub_XMPP.Tests
             _event = new GitHubCommitCommentEvent(_notifier);
 
             string text =
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson", "GitHubCommitCommentJson.txt"));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleJson",
+                                              "GitHubCommitCommentJson.txt"));
             _event.Handle(text);
         }
 
@@ -44,7 +45,7 @@ namespace GitHub_XMPP.Tests
             _event.EventData.repository.ShouldNotBe(null);
             _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");
         }
-        
+
         [Test]
         public void TheCommentShouldBeSet()
         {

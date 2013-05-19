@@ -43,14 +43,14 @@ namespace GitHub_XMPP.Tests
         public void TheRepoShouldBeSet()
         {
             _event.EventData.repository.ShouldNotBe(null);
-            _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");            
+            _event.EventData.repository.name.ShouldBe("TimeZoneInfoGenerator");
         }
 
         [Test]
         public void TheDataShouldIncludeCommits()
         {
             _event.EventData.commits.Length.ShouldBe(2);
-            _event.EventData.commits[0].message.ShouldBe("Readme change");            
+            _event.EventData.commits[0].message.ShouldBe("Readme change");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommandLine;
 using GitHub_XMPP.Installers;
 
@@ -40,15 +41,17 @@ namespace GitHubHookConfigurator
         private string GetHookId(CommandLineOptions options)
         {
             string hookid = null;
-            var hooks = _installer.GetAllGitHubHooks(options.Username, options.Repo);
+            List<GitHubHookInstaller.GitHubHookResponse> hooks = _installer.GetAllGitHubHooks(options.Username,
+                                                                                              options.Repo);
             for (int i = 0; i < hooks.Count; i++)
             {
-                Console.WriteLine(string.Format("{0}: {1} {2} ({3})", i+1, hooks[i].name, hooks[i].config.url, hooks[i].id));
+                Console.WriteLine(string.Format("{0}: {1} {2} ({3})", i + 1, hooks[i].name, hooks[i].config.url,
+                                                hooks[i].id));
             }
             Console.WriteLine("Please select which hook to use (enter the first number on the line):");
             for (int i = 0; string.IsNullOrWhiteSpace(hookid) && i < 3; i++)
             {
-                var line = Console.ReadLine();
+                string line = Console.ReadLine();
                 int index;
                 if (int.TryParse(line, out index) && index > 0 && index <= hooks.Count)
                 {

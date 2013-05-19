@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="agsXMPP, Version=1.1.1.0, Culture=neutral, PublicKeyToken=ff839b81f1debe86, processorArchitecture=MSIL" />
     <Reference Include="Nancy, Version=0.17.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="NSubstitute">
       <HintPath>..\src\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
@@ -58,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BotEngine\SomeoneSaysSlowClap.cs" />
     <Compile Include="GitHubCommitCommentEventArrives.cs" />
     <Compile Include="GitHubForkEventArrives.cs" />
     <Compile Include="GitHubGollumEventArrives.cs" />

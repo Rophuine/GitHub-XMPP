@@ -7,7 +7,7 @@ namespace GitHub_XMPP.EventHandlers
 {
     public class GitHubMemberEvent : IGitHubEventHandler
     {
-        private IEventNotifier _eventNotifier;
+        private readonly IEventNotifier _eventNotifier;
 
         public GitHubMemberEvent(IEventNotifier eventNotifier)
         {
