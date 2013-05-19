@@ -31,5 +31,8 @@ function MessageObject(room, user, message) {
     this.message = message;
     this.send = msgSend;
     this.random = pickRandom;
+    this.http = function(a, b) {
+        return new ScopedClient(a, b);
+    };
 }
 

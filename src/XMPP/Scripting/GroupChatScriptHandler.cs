@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
+using System.Net;
 using GitHub_XMPP.EventServices;
 using GitHub_XMPP.Notifiers;
 using Jurassic;
@@ -108,9 +111,14 @@ namespace GitHub_XMPP.XMPP
             }
         }
 
+        private Dictionary<int, string> _coffeeCache = new Dictionary<int, string>();
         private string CompileCoffeeScript(string coffeeScript)
         {
-            return CoffeeCompiler.CallGlobalFunction<string>("compile", coffeeScript);
+            var hash = coffeeScript.GetHashCode();
+            if (_coffeeCache.ContainsKey(hash)) return _coffeeCache[hash];
+            var js = CoffeeCompiler.CallGlobalFunction<string>("compile", coffeeScript);
+            _coffeeCache.Add(hash, js);
+            return js;
         }
 
         private ArrayInstance RunScriptFromFile(GroupChatMessageArrived eventObject, string file)
@@ -121,6 +129,9 @@ namespace GitHub_XMPP.XMPP
         private ArrayInstance RunScript(GroupChatMessageArrived eventObject, string js)
         {
             var jsEngine = new ScriptEngine();
+            jsEngine.EnableDebugging = true;
+            jsEngine.SetGlobalValue("HttpRequest", new HttpRequestConstructor(jsEngine));
+            jsEngine.ExecuteFile(Path.Combine(BaseScriptFolder, "ScopedHttpClient.js"));
             jsEngine.ExecuteFile(Path.Combine(BaseScriptFolder, "hubotScriptInvoker.js"));
             jsEngine.Execute(js);
             jsEngine.SetGlobalValue("messageBody", eventObject.Message.Body);
@@ -128,6 +139,56 @@ namespace GitHub_XMPP.XMPP
             jsEngine.Execute("module.exports(bot);");
             var result = jsEngine.GetGlobalValue("messages") as ArrayInstance;
             return result;
+        }
+    }
+
+    public class HttpRequestConstructor : ClrFunction
+    {
+        public HttpRequestConstructor(ScriptEngine engine)
+            : base(engine.Function.InstancePrototype, "HttpRequest", new HttpRequestInstance(engine.Object.InstancePrototype))
+        {
+        }
+
+        [JSConstructorFunction]
+        public HttpRequestInstance Construct(ObjectInstance options, FunctionInstance callback)
+        {
+            return new HttpRequestInstance(this.InstancePrototype, options, callback);
+        }
+    }
+
+    public class HttpRequestInstance : ObjectInstance
+    {
+        private ObjectInstance _options;
+        private FunctionInstance _callback;
+        public HttpRequestInstance(ObjectInstance instancePrototype, ObjectInstance options, FunctionInstance callback)
+            : base(instancePrototype)
+        {
+            _options = options;
+            _callback = callback;
+        }
+
+        public HttpRequestInstance(ObjectInstance instancePrototype)
+            : base(instancePrototype)
+        {
+        }
+
+        [JSFunction(Name = "end")]
+        public void End()
+        {
+            var client = new WebClient();
+            client.DownloadString(_options.Properties.Where(prop => prop.Name.ToLower() == "url").FirstOrDefault().ToString());
+        }
+
+        [JSFunction(Name = "on")]
+        public void On(string eventString, FunctionInstance callback)
+        {
+            "".ToString();
+        }
+
+        [JSFunction(Name = "write")]
+        public void Write(string data, string encoding)
+        {
+            "".ToString();
         }
     }
 }
