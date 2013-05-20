@@ -307,11 +307,15 @@ urlparse = function (url, ignored) {
 };
 http = {
     request: function (options, callback) {
-        return new HttpRequest(options, callback);
+        var dummy = callback;
+        if (dummy == null) dummy = function () { };
+        return new HttpRequest(options, dummy);
     }
 };
 https = {
     request: function (options, callback) {
-        return new HttpRequest(options, callback);
+        var dummy = callback;
+        if (dummy == null) dummy = function () { };
+        return new HttpRequest(options, dummy);
     }
 };
