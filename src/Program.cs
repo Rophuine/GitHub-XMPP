@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading;
 using GitHub_XMPP.Installers;
 using Nancy.Hosting.Self;
@@ -7,6 +8,11 @@ namespace GitHub_XMPP
 {
     internal class Program
     {
+        private static bool RunGitHubListener
+        {
+            get { return bool.Parse(ConfigurationManager.AppSettings["RunGitHubListener"]); }
+        }
+
         private static void Main(string[] args)
         {
             GitHubHookInstaller.InstallGitHubHooksUsingAppConfig();
@@ -14,13 +20,13 @@ namespace GitHub_XMPP
             var host = new NancyHost(new[] {new Uri("http://localhost:6893")});
             try
             {
-                host.Start();
+                if (RunGitHubListener) host.Start();
                 while (true)
                     Thread.Sleep(50000);
             }
             finally
             {
-                host.Stop();
+                if (RunGitHubListener) host.Stop();
             }
         }
     }
