@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using GitHub_XMPP.GitHubDtos;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 
@@ -34,13 +33,5 @@ namespace GitHub_XMPP.EventHandlers
 
             _eventNotifier.SendText(sb.ToString());
         }
-    }
-
-    public class GitHubMemberEventData
-    {
-        public GitHubUser member { get; set; }
-        public string action { get; set; }
-        public GitHubRepository repository { get; set; }
-        public GitHubUser sender { get; set; }
     }
 }
