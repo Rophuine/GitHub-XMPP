@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading;
-using GitHub_XMPP.EventServices;
-using GitHub_XMPP.XMPP;
+using GitHub_XMPP.Services;
+using GitHub_XMPP.XMPP.Events;
 using agsXMPP;
 using agsXMPP.Collections;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 
-namespace GitHub_XMPP.Notifiers
+namespace GitHub_XMPP.XMPP
 {
     public class XMPPClient : IEventNotifier, IDisposable
     {
@@ -120,11 +120,6 @@ namespace GitHub_XMPP.Notifiers
 
             _man = new MucManager(_connection);
             _man.JoinRoom(GitBotJidString, XMPPUser, XMPPRoomPassword, true);
-            /*Presence pres = new Presence();
-            Jid to = new Jid(RoomJidString);
-            to.Resource = XMPPUser;
-            pres.To = to;
-            _connection.Send(pres);*/
         }
 
         public bool Disposed { get; protected set; }
@@ -135,12 +130,6 @@ namespace GitHub_XMPP.Notifiers
             {
                 Disposed = true;
                 _man.LeaveRoom(GitBotJidString, XMPPUser);
-                /*Presence pres = new Presence();
-                Jid to = new Jid(RoomJidString);
-                to.Resource = XMPPUser;
-                pres.To = to;
-                pres.Type = PresenceType.unavailable;
-                _connection.Send(pres);*/
             }
         }
     }

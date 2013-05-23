@@ -19,7 +19,7 @@ ScopedClient = (function () {
 
     ScopedClient.prototype.request = function (method, reqBody, callback) {
         var headers, port, req, sendingData,
-      _this = this;
+        _this = this;
         if (typeof reqBody === 'function') {
             callback = reqBody;
             reqBody = null;

@@ -1,7 +1,8 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
-using GitHub_XMPP.EventServices;
+using GitHub_XMPP.GitHub;
 using GitHub_XMPP.Installers;
+using GitHub_XMPP.Services;
 
 namespace GitHub_XMPP
 {
@@ -13,7 +14,7 @@ namespace GitHub_XMPP
         {
             Container = new WindsorContainer();
             Container.Install(FromAssembly.Containing<GitHubHookInstaller>());
-            DomainEvents.SetEventBrokerStrategy(new WindsorEventBroker());
+            DomainEvents.SetEventBrokerStrategy(Container.Resolve<IEventBroker>());
         }
     }
 }

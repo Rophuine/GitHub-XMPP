@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using GitHub_XMPP.EventServices;
+using GitHub_XMPP.Services;
+using GitHub_XMPP.XMPP.Events;
 
 namespace GitHub_XMPP.XMPP.Bot
 {

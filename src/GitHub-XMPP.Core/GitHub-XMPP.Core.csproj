@@ -96,6 +96,8 @@
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubMemberEventData.cs" />
     <Compile Include="Installers\DomainEventsInstaller.cs" />
     <Compile Include="Installers\GitHubEventInstaller.cs" />
+    <Compile Include="Installers\ScriptEngineInstaller.cs" />
+    <Compile Include="Installers\ServiceLocatorInstaller.cs" />
     <Compile Include="Installers\XMPPBotInstaller.cs" />
     <Compile Include="Installers\XMPPMessengerInstaller.cs" />
     <Compile Include="IoC.cs" />
@@ -107,9 +109,14 @@
     <Compile Include="GitHub\EventHandlers\GitHubWikiUpdateEvent.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubWikiUpdateEventData.cs" />
     <Compile Include="GitHub\EventHandlers\GitHubForkEvent.cs" />
-    <Compile Include="EventServices\DomainEvents.cs" />
-    <Compile Include="EventServices\IDomainEvent.cs" />
-    <Compile Include="EventServices\IHandle.cs" />
+    <Compile Include="NodeEmu\API\INodeAPIComponent.cs" />
+    <Compile Include="NodeEmu\API\Path.cs" />
+    <Compile Include="NodeEmu\API\Require.cs" />
+    <Compile Include="NodeEmu\Installers\NodeAPIComponentInstaller.cs" />
+    <Compile Include="Services\DomainEvents.cs" />
+    <Compile Include="Services\IDomainEvent.cs" />
+    <Compile Include="Services\IEventBroker.cs" />
+    <Compile Include="Services\IHandle.cs" />
     <Compile Include="GitHub\DTOs\GitHubCommit.cs" />
     <Compile Include="GitHub\DTOs\GitHubIssueComment.cs" />
     <Compile Include="GitHub\EventHandlers\GitHubIssueCommentEvent.cs" />
@@ -131,12 +138,19 @@
     <Compile Include="GitHub\EventHandlers\GitHubPullRequestEvent.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubPullRequestEventData.cs" />
     <Compile Include="GitHub\EventHandlers\GitHubPullRequestReviewCommentEvent.cs" />
-    <Compile Include="EventServices\GitHubHookServer.cs" />
+    <Compile Include="Services\GitHubHookServer.cs" />
     <Compile Include="GitHub\DTOs\WikiPageUpdateDetails.cs" />
     <Compile Include="GitHub\GitHubHookInstaller.cs" />
-    <Compile Include="EventServices\IEventNotifier.cs" />
+    <Compile Include="Services\IEventNotifier.cs" />
+    <Compile Include="NodeEmu\IScriptEngine.cs" />
+    <Compile Include="NodeEmu\NodeJsEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IServiceLocator.cs" />
+    <Compile Include="Services\WindsorEventBroker.cs" />
+    <Compile Include="Services\WindsorServiceLocator.cs" />
+    <Compile Include="NodeEmu\API\HttpRequestConstructor.cs" />
+    <Compile Include="NodeEmu\API\HttpRequestInstance.cs" />
     <Compile Include="XMPP\XMPPClient.cs" />
     <Compile Include="XMPP\Bot\Counter.cs" />
     <Compile Include="XMPP\Bot\GitBot.cs" />
@@ -162,11 +176,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Scripts\applause.coffee" />
-    <None Include="Scripts\ferengi_rules_of_acquisition.coffee">
+    <None Include="Scripts\applause.coffeex" />
+    <None Include="Scripts\ferengi_rules_of_acquisition.coffeex">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\reddit-jokes.coffee">
+    <None Include="Scripts\reddit-jokes.coffeex">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -196,9 +210,12 @@
     <Content Include="BaseScripts\ScopedHttpClient.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\applause.js">
+    <Content Include="Scripts\Paths.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Scripts\applause.jsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="BaseScripts\hubotScriptInvoker.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

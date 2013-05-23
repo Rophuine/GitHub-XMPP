@@ -1,4 +1,4 @@
-﻿namespace GitHub_XMPP.EventServices
+﻿namespace GitHub_XMPP.Services
 {
     public interface IHandle<in TEventType> where TEventType : IDomainEvent
     {

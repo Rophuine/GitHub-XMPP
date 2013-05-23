@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandLine;
+using GitHub_XMPP.GitHub;
 using GitHub_XMPP.Installers;
 
 namespace GitHubHookConfigurator

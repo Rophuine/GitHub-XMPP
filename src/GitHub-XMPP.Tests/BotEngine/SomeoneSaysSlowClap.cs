@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.Services;
 using GitHub_XMPP.XMPP;
+using GitHub_XMPP.XMPP.Events;
+using GitHub_XMPP.XMPP.Scripting;
 using NSubstitute;
 using NUnit.Framework;
 using agsXMPP;
@@ -22,9 +24,9 @@ namespace GitHub_XMPP.Tests.BotEngine
             var msg = new Message(to, from, MessageType.groupchat, "slow clap");
             var eventObj = new GroupChatMessageArrived(msg, "testroom");
             _notifier = Substitute.For<IEventNotifier>();
-            var handler = new GroupChatScriptHandler(_notifier);
-            handler.ScriptFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "scripts");
-            handler.Handle(eventObj);
+            //var handler = new GroupChatScriptHandler(_notifier);
+            //handler.ScriptFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "scripts");
+            //handler.Handle(eventObj);
         }
 
         [Test]

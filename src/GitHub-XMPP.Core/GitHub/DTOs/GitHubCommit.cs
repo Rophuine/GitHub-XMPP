@@ -1,4 +1,4 @@
-namespace GitHub_XMPP.GitHubDtos
+namespace GitHub_XMPP.GitHub.DTOs
 {
     public class GitHubCommit
     {

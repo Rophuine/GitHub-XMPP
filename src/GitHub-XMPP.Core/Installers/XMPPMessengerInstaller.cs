@@ -1,7 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.Services;
+using GitHub_XMPP.XMPP;
 
 namespace GitHub_XMPP.Installers
 {

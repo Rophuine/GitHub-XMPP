@@ -5,7 +5,7 @@ using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace GitHub_XMPP.Installers
+namespace GitHub_XMPP.GitHub
 {
     public class GitHubHookInstaller
     {

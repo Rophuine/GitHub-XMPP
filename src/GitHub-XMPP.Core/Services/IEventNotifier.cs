@@ -1,4 +1,4 @@
-﻿namespace GitHub_XMPP.Notifiers
+﻿namespace GitHub_XMPP.Services
 {
     public interface IEventNotifier
     {
