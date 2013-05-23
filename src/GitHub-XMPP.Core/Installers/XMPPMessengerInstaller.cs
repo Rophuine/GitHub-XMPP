@@ -14,7 +14,7 @@ namespace GitHub_XMPP.Installers
                        .BasedOn<IEventNotifier>()
                        .LifestyleSingleton()
                        .WithServiceBase());
-            var c = container.Resolve<IEventNotifier>();
+            var c = container.Resolve<IEventNotifier>();    // Grab the singleton immediate so it is instantiated
         }
     }
 }
