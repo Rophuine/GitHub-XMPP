@@ -109,9 +109,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\GitHub-XMPP.csproj">
+    <ProjectReference Include="..\GitHub-XMPP.Core\GitHub-XMPP.Core.csproj">
       <Project>{8397A1F6-E79C-4438-A47A-9E0026F7554F}</Project>
-      <Name>GitHub-XMPP</Name>
+      <Name>GitHub-XMPP.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
