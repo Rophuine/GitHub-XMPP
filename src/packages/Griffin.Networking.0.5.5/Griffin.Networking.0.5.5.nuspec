@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Griffin.Networking</id>
+    <version>0.5.5</version>
+    <title>Griffin.Networking</title>
+    <authors>jgauffin</authors>
+    <owners>jgauffin</owners>
+    <licenseUrl>http://www.gnu.org/licenses/lgpl.txt</licenseUrl>
+    <projectUrl>https://github.com/jgauffin/griffin.networking</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A somewhat performant networking library written in C#. Helps you create well structured networking applications faster and easier.</description>
+    <summary>A somewhat performant networking library written in C#. Helps you create well structured networking applications faster and easier.</summary>
+    <releaseNotes>Fixed github issues up to #10</releaseNotes>
+    <copyright>Jonas Gauffin</copyright>
+    <language />
+    <tags>sockets networking remoting</tags>
+  </metadata>
+</package>

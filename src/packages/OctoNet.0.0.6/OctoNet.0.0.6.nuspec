@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>OctoNet</id>
+    <version>0.0.6</version>
+    <title>OctoNet</title>
+    <authors>Matthew Strickland</authors>
+    <owners>Matthew Strickland</owners>
+    <licenseUrl>https://github.com/mps/OctoNet/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mps/OctoNet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Github Api Wrapper for .NET projects</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>git github OctoNet</tags>
+    <dependencies>
+      <dependency id="RestSharp" version="103.1" />
+      <dependency id="NewtonSoft.Json" version="4.5.7" />
+    </dependencies>
+  </metadata>
+</package>

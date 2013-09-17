@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>VisualStudioGitIgnore</id>
+    <version>1.3.0.0</version>
+    <title>Visual Studio .gitignore</title>
+    <authors>Dan Ludwig</authors>
+    <owners>Dan Ludwig</owners>
+    <licenseUrl>https://github.com/danludwig/VisualStudioGitIgnore</licenseUrl>
+    <projectUrl>https://github.com/danludwig/VisualStudioGitIgnore</projectUrl>
+    <iconUrl>http://www.gravatar.com/avatar/2b36e5d2ac5fe3c2377466dd98c62d52.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A better .gitignore file for VisualStudio from NuGet.</description>
+    <releaseNotes>Review the README.md file at the project URL.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <tags>git gitignore</tags>
+  </metadata>
+</package>

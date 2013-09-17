@@ -1,0 +1,2 @@
+# Don't ignore *anything* in this folder. If a package contains a .bak file, well, maybe it needs it.
+!*

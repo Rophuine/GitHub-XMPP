@@ -29,9 +29,6 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 
-#Ignore packages directory
-Packages/
-
 #Allow NuGet.exe
 !NuGet.exe
 
