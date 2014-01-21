@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Threading;
 using GitHub_XMPP.EventServices;
+using GitHub_XMPP.HipChat;
 using GitHub_XMPP.XMPP;
 using agsXMPP;
 using agsXMPP.Collections;
@@ -10,7 +11,25 @@ using agsXMPP.protocol.x.muc;
 
 namespace GitHub_XMPP.Notifiers
 {
-    public class XMPPClient : IEventNotifier, IDisposable
+    public class SuperLazyNotifierClass : IEventNotifier
+    {
+        XMPPClient xmpp = new XMPPClient();
+        HipChatClient hip = new HipChatClient();
+        public void SendText(string test)
+        {
+            try
+            {
+                xmpp.SendText(test);
+            }
+            catch { }
+            try
+            {
+                hip.SendText(test);
+            }
+            catch { }
+        }
+    }
+    public class XMPPClient : IDisposable
     {
         private readonly XmppClientConnection _connection;
         private MucManager _man;

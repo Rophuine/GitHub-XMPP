@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using agsXMPP.protocol.extensions.pubsub.@event;
 using GitHub_XMPP.GitHubDtos;
 using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
@@ -21,8 +22,10 @@ namespace GitHub_XMPP.EventHandlers
             EventData = JsonConvert.DeserializeObject<GitHubWikiUpdateEventData>(jsonData);
 
             var sb = new StringBuilder();
+            var login = EventData.sender != null ? EventData.sender.login : "unknown";
+            var repoName = EventData.repository != null ? EventData.repository.full_name : "unknown";
             sb.Append(string.Format("{0} has made the following changes to the wiki for {1}:",
-                                    EventData.sender.login, EventData.repository.full_name));
+                                    login, repoName));
             foreach (WikiPageUpdateDetails pageUpdate in EventData.pages)
             {
                 sb.AppendLine();

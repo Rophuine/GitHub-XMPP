@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using GitHub_XMPP.Scripting;
+//using GitHub_XMPP.Scripting;
 using NUnit.Framework;
 using Shouldly;
 
@@ -9,7 +9,7 @@ namespace GitHub_XMPP.Tests.ScriptEngine
 {
     public class CoffeeScriptCompilerWorks
     {
-        [Test]
+/*        [Test]
         public void CompileCoffeeScript()
         {
             string coffee;
@@ -30,6 +30,6 @@ namespace GitHub_XMPP.Tests.ScriptEngine
                     coffee = reader.ReadToEnd();
             }
             return coffee;
-        }
+        }*/
     }
 }

@@ -17,7 +17,9 @@ namespace GitHub_XMPP
         {
             GitHubHookInstaller.InstallGitHubHooksUsingAppConfig();
             IoC.Install();
-            var host = new NancyHost(new[] {new Uri("http://localhost:6893")});
+            HostConfiguration config = new HostConfiguration();
+            config.UrlReservations.CreateAutomatically = true;
+            var host = new NancyHost(config, new[] {new Uri("http://localhost:6893")});
             try
             {
                 if (RunGitHubListener) host.Start();
