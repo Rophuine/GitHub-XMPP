@@ -98,6 +98,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventServices\IEventBroker.cs" />
+    <Compile Include="EventServices\WindsorEventBroker.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubMemberEventData.cs" />
     <Compile Include="HipChat\DTOs\Request\RoomNotificationRequest.cs" />
     <Compile Include="HipChat\DTOs\Response\Room.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messaging\MultiMessageServiceNotifier.cs" />
+    <Compile Include="XMPP\Bot\GitBotNotifier.cs" />
     <Compile Include="XMPP\XMPPClient.cs" />
     <Compile Include="XMPP\Bot\Counter.cs" />
     <Compile Include="XMPP\Bot\GitBot.cs" />

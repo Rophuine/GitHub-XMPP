@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using GitHub_XMPP.Messaging;
@@ -21,7 +17,8 @@ namespace GitHub_XMPP.Installers
                 .BasedOn<IMessagingServiceWithPresence>()
                 .LifestyleSingleton()
                 .WithServiceBase());
-            var c = container.ResolveAll<IMessagingServiceWithPresence>();    // Grab the singletons immediately to trigger presence
+            IMessagingServiceWithPresence[] c = container.ResolveAll<IMessagingServiceWithPresence>();
+                // Grab the singletons immediately to trigger presence
         }
     }
 }

@@ -19,9 +19,9 @@ namespace GitHub_XMPP.XMPP.Bot
 
         private readonly Dictionary<string, int> runningCount = new Dictionary<string, int>();
 
-        private readonly Regex count = new Regex("count (.*)", RegexOptions.IgnoreCase);
+        private readonly Regex count = new Regex("\\bcount (.*)", RegexOptions.IgnoreCase);
         private readonly Regex stopcount = new Regex("stop counting (.*)");
-        private readonly Regex tally = new Regex("tally (.*)");
+        private readonly Regex tally = new Regex("\\btally (.*)");
 
         public override void ReceiveGroupMessage(GroupChatMessageArrived message, MatchCollection matches)
         {
@@ -48,7 +48,7 @@ namespace GitHub_XMPP.XMPP.Bot
             else
             {
                 _eventNotifier.SendText(string.Format("I've seen '{0}' {1} times since I started counting.", text,
-                                                      runningCount[text]));
+                    runningCount[text]));
             }
         }
 
@@ -61,7 +61,7 @@ namespace GitHub_XMPP.XMPP.Bot
             else
             {
                 _eventNotifier.SendText(string.Format("No longer counting '{0}', I got up to {1}.", text,
-                                                      runningCount[text]));
+                    runningCount[text]));
                 runningCount.Remove(text);
             }
         }
@@ -71,7 +71,7 @@ namespace GitHub_XMPP.XMPP.Bot
             if (runningCount.ContainsKey(text))
             {
                 _eventNotifier.SendText(string.Format("I'm already counting {0}! Tally is at {1}.", text,
-                                                      runningCount[text]));
+                    runningCount[text]));
             }
             else
             {

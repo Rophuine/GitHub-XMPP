@@ -2,7 +2,6 @@
 using Castle.Windsor.Installer;
 using GitHub_XMPP.EventServices;
 using GitHub_XMPP.GitHub;
-using GitHub_XMPP.Installers;
 
 namespace GitHub_XMPP
 {

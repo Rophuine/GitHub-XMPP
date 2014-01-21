@@ -22,7 +22,7 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.Append(string.Format("Woah! {0} just made {1} public! Nice.", EventData.sender.login,
-                                    EventData.repository.full_name));
+                EventData.repository.full_name));
 
             _eventNotifier.SendText(sb.ToString());
         }

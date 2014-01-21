@@ -22,8 +22,8 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.AppendLine(string.Format("{0} has commented on a pull request on {1}/{2} ({3})", EventData.sender.login,
-                                        EventData.repository.owner.login, EventData.repository.name,
-                                        EventData.comment.html_url));
+                EventData.repository.owner.login, EventData.repository.name,
+                EventData.comment.html_url));
             sb.Append(EventData.comment.body);
 
             _eventNotifier.SendText(sb.ToString());

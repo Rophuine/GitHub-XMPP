@@ -1,7 +1,5 @@
 ﻿using Castle.Core.Internal;
 using GitHub_XMPP.EventServices;
-using GitHub_XMPP.HipChat;
-using GitHub_XMPP.XMPP;
 
 namespace GitHub_XMPP.Messaging
 {
@@ -9,9 +7,10 @@ namespace GitHub_XMPP.Messaging
     {
         public void SendText(string text)
         {
-            var messengers = IoC.Container.ResolveAll<IMessagingService>();
+            IMessagingService[] messengers = IoC.Container.ResolveAll<IMessagingService>();
             messengers.ForEach(m => m.SendText(text));
-            var presenceMessengers = IoC.Container.ResolveAll<IMessagingServiceWithPresence>();
+            IMessagingServiceWithPresence[] presenceMessengers =
+                IoC.Container.ResolveAll<IMessagingServiceWithPresence>();
             presenceMessengers.ForEach(m => m.SendText(text));
         }
     }

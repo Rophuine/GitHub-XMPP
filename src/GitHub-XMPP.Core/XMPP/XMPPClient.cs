@@ -107,8 +107,8 @@ namespace GitHub_XMPP.XMPP
         private void TryToReconnect()
         {
             for (int i = 0;
-                 i < 3 && _connection.XmppConnectionState == XmppConnectionState.Disconnected;
-                 i++, Thread.Sleep(5000))
+                i < 3 && _connection.XmppConnectionState == XmppConnectionState.Disconnected;
+                i++, Thread.Sleep(5000))
                 ConnectToXmppServer();
         }
 

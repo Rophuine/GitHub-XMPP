@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using GitHub_XMPP.EventServices;
 using Nancy;
 
 namespace GitHub_XMPP.GitHub
@@ -10,23 +9,23 @@ namespace GitHub_XMPP.GitHub
             : base("/GitHubHooks")
         {
             Post["/event"] = parms =>
+            {
+                try
                 {
-                    try
-                    {
-                        string githubNotificationType =
-                            Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event")
-                                   .FirstOrDefault()
-                                   .Value.FirstOrDefault();
-                        githubEventMapper.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
-                        return Response.AsText("Thanks GitHub!");
-                    }
-                    catch
-                    {
-                        Response error = Response.AsText("Failed to process message.");
-                        error.StatusCode = HttpStatusCode.InternalServerError;
-                        return error;
-                    }
-                };
+                    string githubNotificationType =
+                        Request.Headers.Where(kvp => kvp.Key == "X-GitHub-Event")
+                            .FirstOrDefault()
+                            .Value.FirstOrDefault();
+                    githubEventMapper.HandleGitHubEvent(githubNotificationType, Request.Form["payload"]);
+                    return Response.AsText("Thanks GitHub!");
+                }
+                catch
+                {
+                    Response error = Response.AsText("Failed to process message.");
+                    error.StatusCode = HttpStatusCode.InternalServerError;
+                    return error;
+                }
+            };
         }
     }
 }

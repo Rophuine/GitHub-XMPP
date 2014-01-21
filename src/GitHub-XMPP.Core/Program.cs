@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Threading;
 using GitHub_XMPP.GitHub;
-using GitHub_XMPP.Installers;
 using Nancy.Hosting.Self;
 
 namespace GitHub_XMPP
@@ -18,7 +17,7 @@ namespace GitHub_XMPP
         {
             GitHubHookInstaller.InstallGitHubHooksUsingAppConfig();
             IoC.Install();
-            HostConfiguration config = new HostConfiguration();
+            var config = new HostConfiguration();
             config.UrlReservations.CreateAutomatically = true;
             var host = new NancyHost(config, new[] {new Uri("http://localhost:6893")});
             try

@@ -22,15 +22,15 @@ namespace GitHub_XMPP.GitHub.EventHandlers
             EventData = JsonConvert.DeserializeObject<GitHubWikiUpdateEventData>(jsonData);
 
             var sb = new StringBuilder();
-            var login = EventData.sender != null ? EventData.sender.login : "unknown";
-            var repoName = EventData.repository != null ? EventData.repository.full_name : "unknown";
+            string login = EventData.sender != null ? EventData.sender.login : "unknown";
+            string repoName = EventData.repository != null ? EventData.repository.full_name : "unknown";
             sb.Append(string.Format("{0} has made the following changes to the wiki for {1}:",
-                                    login, repoName));
+                login, repoName));
             foreach (WikiPageUpdateDetails pageUpdate in EventData.pages)
             {
                 sb.AppendLine();
                 sb.Append(string.Format("{0} {1} {2} ({3})", pageUpdate.action, pageUpdate.page_name,
-                                        pageUpdate.summary ?? "(no summary available)", pageUpdate.html_url));
+                    pageUpdate.summary ?? "(no summary available)", pageUpdate.html_url));
             }
 
             _eventNotifier.SendText(sb.ToString());

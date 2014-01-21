@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using GitHub_XMPP.XMPP.Bot;
@@ -15,10 +11,10 @@ namespace GitHub_XMPP.Installers
         {
             container.Register(
                 Classes.FromAssemblyContaining<GitBot>()
-                       .BasedOn(typeof (GitBot))
-                       .LifestyleSingleton()
-                       .WithServiceBase()
-                       .WithServiceSelf());
+                    .BasedOn(typeof (GitBot))
+                    .LifestyleSingleton()
+                    .WithServiceBase()
+                    .WithServiceSelf());
         }
     }
 }

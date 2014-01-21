@@ -21,10 +21,10 @@ namespace GitHub_XMPP.GitHub.EventHandlers
             EventData = JsonConvert.DeserializeObject<GitHubIssueEventData>(jsonData);
             var sb = new StringBuilder();
             sb.AppendLine(string.Format("{0} just {1} issue {2}", EventData.issue.user.login, EventData.action,
-                                        EventData.issue.number));
+                EventData.issue.number));
             string assignee = (EventData.issue.assignee != null) ? EventData.issue.assignee.login : "unassigned";
             sb.Append(string.Format("{0} - {1} ({2})", EventData.issue.title, assignee,
-                                    EventData.issue.html_url));
+                EventData.issue.html_url));
             _eventNotifier.SendText(sb.ToString());
         }
     }

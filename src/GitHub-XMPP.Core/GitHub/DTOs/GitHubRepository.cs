@@ -23,7 +23,7 @@ namespace GitHub_XMPP.GitHub.DTOs
                 if (!string.IsNullOrWhiteSpace(_fullName)) return _fullName;
                 if (!string.IsNullOrWhiteSpace(url))
                 {
-                    Regex nameFinder = new Regex(".*github.com/(.*)");
+                    var nameFinder = new Regex(".*github.com/(.*)");
                     if (nameFinder.IsMatch(url))
                         return nameFinder.Match(url).Groups[1].ToString();
                 }

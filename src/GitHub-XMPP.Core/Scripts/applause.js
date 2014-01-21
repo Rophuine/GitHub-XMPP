@@ -12,8 +12,8 @@
     "http://www.reactiongifs.com/wp-content/uploads/2013/01/applause.gif"
 ];
 
-module.exports = function (robot) {
-    return robot.hear(/applau(d|se)|bravo|slow clap/i, function (msg) {
+module.exports = function(robot) {
+    return robot.hear(/applau(d|se)|bravo|slow clap/i, function(msg) {
         return msg.send(msg.random(images));
     });
 };

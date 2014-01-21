@@ -8,7 +8,7 @@ using Jurassic.Library;
 
 namespace GitHub_XMPP.XMPP.Scripting
 {
-    public class GroupChatScriptHandler : IHandle<GroupChatMessageArrived>
+    public class GroupChatScriptHandler // : IHandle<GroupChatMessageArrived>
     {
         private readonly IEventNotifier _eventNotifier;
 
@@ -44,8 +44,8 @@ namespace GitHub_XMPP.XMPP.Scripting
         private string GetJSInvoker(GroupChatMessageArrived eventObj)
         {
             return string.Format("message = new MessageObject('{0}','{1}',messageBody);",
-                                 quoteForJS(eventObj.Room),
-                                 quoteForJS(eventObj.Message.From));
+                quoteForJS(eventObj.Room),
+                quoteForJS(eventObj.Message.From));
         }
 
         public void Handle(GroupChatMessageArrived eventObject)

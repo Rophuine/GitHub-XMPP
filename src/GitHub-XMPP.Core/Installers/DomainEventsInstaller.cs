@@ -11,8 +11,8 @@ namespace GitHub_XMPP.Installers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Classes.FromAssemblyContaining<GitHubEventMapper>().BasedOn(typeof (IHandle<>))
-                                      .WithServiceBase()
-                                      .LifestyleTransient());
+                .WithServiceBase()
+                .LifestyleTransient());
         }
     }
 }

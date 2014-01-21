@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using GitHub_XMPP.EventServices;
 using GitHub_XMPP.XMPP.Events;
@@ -22,9 +19,9 @@ namespace GitHub_XMPP.XMPP.Bot
 
         public override void ReceiveGroupMessage(GroupChatMessageArrived message, MatchCollection matches)
         {
-            var search = matches[0].Groups[1];
+            Group search = matches[0].Groups[1];
             var client = new WebClient();
-            var response = client.DownloadString(string.Format("http://search.twitter.com/search.json?q={0}", search));
+            string response = client.DownloadString(string.Format("http://search.twitter.com/search.json?q={0}", search));
             var queryResult = JsonConvert.DeserializeObject<TwitterQueryResult>(response);
             if (queryResult.results != null && queryResult.results.Count > 0)
             {
@@ -63,6 +60,7 @@ namespace GitHub_XMPP.XMPP.Bot
             public string to_user_name { get; set; }
             public object in_reply_to_status_id { get; set; }
             public string in_reply_to_status_id_str { get; set; }
+
             public string GetTweetUrl()
             {
                 return string.Format("http://twitter.com/{0}/status/{1}", from_user, id);

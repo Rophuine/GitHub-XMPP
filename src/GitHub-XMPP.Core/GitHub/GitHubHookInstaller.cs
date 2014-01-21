@@ -72,34 +72,34 @@ namespace GitHub_XMPP.GitHub
             var config = new HookSettings();
             config.active = true;
             config.events = new[]
-                {
-                    "push",
-                    "issues",
-                    "issue_comment",
-                    "commit_comment",
-                    "pull_request",
-                    "pull_request_review_comment",
-                    "gollum",
-                    "watch",
-                    "download",
-                    "fork",
-                    "fork_apply",
-                    "member",
-                    "public",
-                    "team_add",
-                    "status",
-                };
+            {
+                "push",
+                "issues",
+                "issue_comment",
+                "commit_comment",
+                "pull_request",
+                "pull_request_review_comment",
+                "gollum",
+                "watch",
+                "download",
+                "fork",
+                "fork_apply",
+                "member",
+                "public",
+                "team_add",
+                "status",
+            };
             string json = JsonConvert.SerializeObject(config);
             var request =
                 new RestRequest(string.Format("/repos/{0}/{1}/hooks/{2}", gitHubUsername, gitHubRepo, gitHubHookId),
-                                Method.PATCH);
+                    Method.PATCH);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(config);
             IRestResponse response = _gitHubClient.Execute(request);
             if (!string.IsNullOrWhiteSpace(response.ErrorMessage) || response.StatusCode != HttpStatusCode.OK)
             {
                 Console.WriteLine(string.Format("Encountered an error trying to reconfigure the hook: {0}",
-                                                response.ErrorMessage));
+                    response.ErrorMessage));
                 throw new Exception("Unable to reconfigure hook.");
             }
             Console.WriteLine("I have reconfigured the hook - you should get notifications for all events now.");
@@ -112,7 +112,7 @@ namespace GitHub_XMPP.GitHub
             if (!string.IsNullOrWhiteSpace(response.ErrorMessage) || response.StatusCode != HttpStatusCode.OK)
             {
                 Console.WriteLine(string.Format("Encountered an error trying to get the list of hooks: {0}",
-                                                response.ErrorMessage));
+                    response.ErrorMessage));
                 throw new Exception("Unable to get list of hooks.");
             }
             if (response.Data.Count == 0)

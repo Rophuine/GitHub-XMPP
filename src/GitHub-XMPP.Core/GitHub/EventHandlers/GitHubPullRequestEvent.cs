@@ -22,8 +22,8 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.Append(string.Format("{0} {1} pull request {2} on {3} ({4})", EventData.sender.login,
-                                    EventData.action, EventData.pull_request.title, EventData.repository.name,
-                                    EventData.pull_request.html_url));
+                EventData.action, EventData.pull_request.title, EventData.repository.name,
+                EventData.pull_request.html_url));
             if (!string.IsNullOrWhiteSpace(EventData.pull_request.body))
             {
                 sb.AppendLine();

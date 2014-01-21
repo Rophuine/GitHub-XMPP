@@ -32,4 +32,3 @@ function MessageObject(room, user, message) {
     this.send = msgSend;
     this.random = pickRandom;
 }
-

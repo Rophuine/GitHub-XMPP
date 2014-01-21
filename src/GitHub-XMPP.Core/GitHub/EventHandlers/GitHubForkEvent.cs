@@ -22,8 +22,8 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.Append(string.Format("{0} just forked {1}/{2} ({3})", EventData.sender.login,
-                                    EventData.repository.owner.login, EventData.repository.name,
-                                    EventData.forkee.html_url));
+                EventData.repository.owner.login, EventData.repository.name,
+                EventData.forkee.html_url));
 
             _eventNotifier.SendText(sb.ToString());
         }

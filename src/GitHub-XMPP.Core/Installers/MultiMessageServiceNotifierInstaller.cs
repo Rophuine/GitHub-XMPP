@@ -12,9 +12,9 @@ namespace GitHub_XMPP.Installers
         {
             container.Register(
                 Classes.FromAssemblyContaining<MultiMessageServiceNotifier>()
-                       .BasedOn<IEventNotifier>()
-                       .LifestyleSingleton()
-                       .WithServiceBase());
+                    .BasedOn<IEventNotifier>()
+                    .LifestyleSingleton()
+                    .WithServiceBase());
         }
     }
 }

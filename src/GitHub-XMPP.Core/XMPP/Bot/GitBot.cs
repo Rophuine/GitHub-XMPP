@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using GitHub_XMPP.EventServices;
 using GitHub_XMPP.XMPP.Events;
 
 namespace GitHub_XMPP.XMPP.Bot
@@ -14,32 +13,12 @@ namespace GitHub_XMPP.XMPP.Bot
         {
             return (MessageFilter.IsMatch(eventObj.Message.Body));
         }
-        
+
         public void Handle(GroupChatMessageArrived eventObject)
         {
             if (TestMessageFilter(eventObject))
             {
                 ReceiveGroupMessage(eventObject, MessageFilter.Matches(eventObject.Message.Body));
-            }
-        }
-    }
-
-    public class GitBotNotifier : IHandle<GroupChatMessageArrived>
-    {
-        public void Handle(GroupChatMessageArrived eventObject)
-        {
-            // FIXME this shouldn't have to know about the container
-            var bots = IoC.Container.ResolveAll<GitBot>();
-            foreach (var bot in bots)
-            {
-                try
-                {
-                    bot.Handle(eventObject);
-                }
-                finally
-                {
-                    IoC.Container.Release(bot);
-                }
             }
         }
     }

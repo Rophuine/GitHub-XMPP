@@ -22,7 +22,7 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.AppendLine(string.Format("{0} {1} a comment on issue {2} ({3})", EventData.sender.login, EventData.action,
-                                        EventData.issue.title, EventData.issue.html_url));
+                EventData.issue.title, EventData.issue.html_url));
             sb.Append(EventData.comment.body);
 
             _eventNotifier.SendText(sb.ToString());

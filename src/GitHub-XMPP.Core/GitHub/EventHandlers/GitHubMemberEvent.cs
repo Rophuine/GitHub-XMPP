@@ -22,8 +22,8 @@ namespace GitHub_XMPP.GitHub.EventHandlers
 
             var sb = new StringBuilder();
             sb.Append(string.Format("{0} just {1} {2} on {3} ({4})", EventData.sender.login, EventData.action,
-                                    EventData.member.login, EventData.repository.full_name,
-                                    EventData.repository.html_url));
+                EventData.member.login, EventData.repository.full_name,
+                EventData.repository.html_url));
             if (EventData.action == "added")
             {
                 sb.AppendLine();
