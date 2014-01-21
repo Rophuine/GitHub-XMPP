@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Text;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.EventServices;
+using GitHub_XMPP.GitHub.EventHandlers.DTOs;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.EventHandlers
+namespace GitHub_XMPP.GitHub.EventHandlers
 {
     public class GitHubPushEvent : IGitHubEventHandler
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading;
+using GitHub_XMPP.GitHub;
 using GitHub_XMPP.Installers;
 using Nancy.Hosting.Self;
 

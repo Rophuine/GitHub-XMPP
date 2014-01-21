@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.EventServices;
+using GitHub_XMPP.XMPP.Events;
 using Newtonsoft.Json;
 
 namespace GitHub_XMPP.XMPP.Bot

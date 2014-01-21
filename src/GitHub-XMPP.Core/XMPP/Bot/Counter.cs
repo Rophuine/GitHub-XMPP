@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.EventServices;
+using GitHub_XMPP.XMPP.Events;
 
 namespace GitHub_XMPP.XMPP.Bot
 {

@@ -1,6 +1,6 @@
-﻿using GitHub_XMPP.GitHubDtos;
+﻿using GitHub_XMPP.GitHub.DTOs;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.GitHub.EventHandlers.DTOs
 {
     public class GitHubForkEventData
     {

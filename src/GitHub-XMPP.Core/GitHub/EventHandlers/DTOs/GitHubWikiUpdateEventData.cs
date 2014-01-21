@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GitHub_XMPP.GitHubDtos;
+using GitHub_XMPP.GitHub.DTOs;
 
-namespace GitHub_XMPP.EventHandlers
+namespace GitHub_XMPP.GitHub.EventHandlers.DTOs
 {
     public class GitHubWikiUpdateEventData
     {

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.EventServices;
 using GitHub_XMPP.XMPP;
+using GitHub_XMPP.XMPP.Events;
+using GitHub_XMPP.XMPP.Scripting;
 using NSubstitute;
 using NUnit.Framework;
 using agsXMPP;

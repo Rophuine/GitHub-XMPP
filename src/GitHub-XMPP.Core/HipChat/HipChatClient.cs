@@ -4,7 +4,6 @@ using System.Net;
 using GitHub_XMPP.HipChat.DTOs;
 using GitHub_XMPP.HipChat.DTOs.Request;
 using GitHub_XMPP.HipChat.DTOs.Response;
-using GitHub_XMPP.Notifiers;
 using Newtonsoft.Json;
 using RestSharp;
 

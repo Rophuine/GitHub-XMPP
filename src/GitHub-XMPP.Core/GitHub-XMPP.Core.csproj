@@ -104,8 +104,9 @@
     <Compile Include="HipChat\HipChatClient.cs" />
     <Compile Include="Installers\DomainEventsInstaller.cs" />
     <Compile Include="Installers\GitHubEventInstaller.cs" />
+    <Compile Include="Installers\MessagingServicesInstaller.cs" />
     <Compile Include="Installers\XMPPBotInstaller.cs" />
-    <Compile Include="Installers\XMPPMessengerInstaller.cs" />
+    <Compile Include="Installers\MultiMessageServiceNotifierInstaller.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubForkEventData.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubIssueEventData.cs" />
@@ -139,12 +140,15 @@
     <Compile Include="GitHub\EventHandlers\GitHubPullRequestEvent.cs" />
     <Compile Include="GitHub\EventHandlers\DTOs\GitHubPullRequestEventData.cs" />
     <Compile Include="GitHub\EventHandlers\GitHubPullRequestReviewCommentEvent.cs" />
-    <Compile Include="EventServices\GitHubHookServer.cs" />
+    <Compile Include="GitHub\GitHubHookServer.cs" />
     <Compile Include="GitHub\DTOs\WikiPageUpdateDetails.cs" />
     <Compile Include="GitHub\GitHubHookInstaller.cs" />
     <Compile Include="EventServices\IEventNotifier.cs" />
+    <Compile Include="Messaging\IMessagingService.cs" />
+    <Compile Include="Messaging\IMessagingServiceWithPresence.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Messaging\MultiMessageServiceNotifier.cs" />
     <Compile Include="XMPP\XMPPClient.cs" />
     <Compile Include="XMPP\Bot\Counter.cs" />
     <Compile Include="XMPP\Bot\GitBot.cs" />

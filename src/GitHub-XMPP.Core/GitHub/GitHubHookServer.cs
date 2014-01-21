@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using GitHub_XMPP.EventServices;
 using Nancy;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.GitHub
 {
     public class GitHubHookServer : NancyModule
     {

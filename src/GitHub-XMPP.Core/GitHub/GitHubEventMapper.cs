@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Castle.Windsor;
-using GitHub_XMPP.EventHandlers;
+using GitHub_XMPP.GitHub.EventHandlers;
 
-namespace GitHub_XMPP.EventServices
+namespace GitHub_XMPP.GitHub
 {
     public class GitHubEventMapper
     {

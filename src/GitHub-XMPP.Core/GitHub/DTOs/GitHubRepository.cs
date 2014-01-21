@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.GitHubDtos
+namespace GitHub_XMPP.GitHub.DTOs
 {
     public class GitHubRepository
     {

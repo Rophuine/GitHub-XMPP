@@ -1,10 +1,10 @@
 ﻿using System.Text;
-using agsXMPP.protocol.extensions.pubsub.@event;
-using GitHub_XMPP.GitHubDtos;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.EventServices;
+using GitHub_XMPP.GitHub.DTOs;
+using GitHub_XMPP.GitHub.EventHandlers.DTOs;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.EventHandlers
+namespace GitHub_XMPP.GitHub.EventHandlers
 {
     public class GitHubWikiUpdateEvent : IGitHubEventHandler
     {

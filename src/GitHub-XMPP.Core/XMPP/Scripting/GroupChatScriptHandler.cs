@@ -2,11 +2,11 @@
 using System.Configuration;
 using System.IO;
 using GitHub_XMPP.EventServices;
-using GitHub_XMPP.Notifiers;
+using GitHub_XMPP.XMPP.Events;
 using Jurassic;
 using Jurassic.Library;
 
-namespace GitHub_XMPP.XMPP
+namespace GitHub_XMPP.XMPP.Scripting
 {
     public class GroupChatScriptHandler : IHandle<GroupChatMessageArrived>
     {

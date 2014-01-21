@@ -1,7 +1,7 @@
-﻿using GitHub_XMPP.EventServices;
-using agsXMPP.protocol.client;
+﻿using agsXMPP.protocol.client;
+using GitHub_XMPP.EventServices;
 
-namespace GitHub_XMPP.XMPP
+namespace GitHub_XMPP.XMPP.Events
 {
     public class GroupChatMessageArrived : IDomainEvent
     {

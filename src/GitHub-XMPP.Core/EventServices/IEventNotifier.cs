@@ -1,7 +1,7 @@
-﻿namespace GitHub_XMPP.Notifiers
+﻿namespace GitHub_XMPP.EventServices
 {
     public interface IEventNotifier
     {
-        void SendText(string test);
+        void SendText(string text);
     }
 }

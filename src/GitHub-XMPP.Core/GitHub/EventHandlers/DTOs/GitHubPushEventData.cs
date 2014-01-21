@@ -1,8 +1,8 @@
 ﻿using System;
-using GitHub_XMPP.GitHubDtos;
+using GitHub_XMPP.GitHub.DTOs;
 using Newtonsoft.Json;
 
-namespace GitHub_XMPP.EventHandlers
+namespace GitHub_XMPP.GitHub.EventHandlers.DTOs
 {
     public class GitHubPushEventData
     {
