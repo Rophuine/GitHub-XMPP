@@ -8,10 +8,30 @@ namespace GitHub_XMPP.Messaging
         public void SendText(string text)
         {
             IMessagingService[] messengers = IoC.Container.ResolveAll<IMessagingService>();
-            messengers.ForEach(m => m.SendText(text));
+            messengers.ForEach(m =>
+            {
+                try
+                {
+                    m.SendText(text);
+                }
+                catch
+                {
+                    // TODO set up some logging framework!
+                }
+            });
             IMessagingServiceWithPresence[] presenceMessengers =
                 IoC.Container.ResolveAll<IMessagingServiceWithPresence>();
-            presenceMessengers.ForEach(m => m.SendText(text));
+            presenceMessengers.ForEach(m =>
+            {
+                try
+                {
+                    m.SendText(text);
+                }
+                catch
+                {
+                    // TODO set up some logging framework!
+                }
+            });
         }
     }
 }

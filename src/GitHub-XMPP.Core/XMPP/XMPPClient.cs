@@ -6,11 +6,12 @@ using agsXMPP.Collections;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using GitHub_XMPP.EventServices;
+using GitHub_XMPP.Messaging;
 using GitHub_XMPP.XMPP.Events;
 
 namespace GitHub_XMPP.XMPP
 {
-    public class XMPPClient : IDisposable
+    public class XMPPClient : IDisposable, IMessagingServiceWithPresence
     {
         private readonly XmppClientConnection _connection;
         private MucManager _man;
